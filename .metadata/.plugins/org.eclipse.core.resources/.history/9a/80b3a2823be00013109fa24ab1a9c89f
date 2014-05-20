@@ -58,7 +58,6 @@ public class Space extends JPanel implements Runnable{
 		y=0;
 		
 		
-		genAI();
 		genBases();
 		genPlanet();
 		genAsteroid();
@@ -116,8 +115,8 @@ public class Space extends JPanel implements Runnable{
 	
 	
 	private void genBases() {
-		//objects.add(new MotherShip(4500,2500,this,Color.red));
-		objects.add(ai.getMotherShip());
+		objects.add(new MotherShip(4500,2500,this,Color.red));
+		
 		player=new MotherShip(500,2500,this,Color.blue);
 		objects.add(player);
 		ui=new ShipsPanel(this,g,player);
@@ -130,10 +129,6 @@ public class Space extends JPanel implements Runnable{
 
 	private void genAsteroid(){
 		objects.add(new Asteroid(500,500,10,10,this));
-	}
-	
-	private void genAI(){
-		ai=new AI(4500,2500,this);
 	}
 	
 	
