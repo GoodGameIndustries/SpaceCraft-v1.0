@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import AI.AI;
 import Objects.Asteroid;
 import Objects.Beacon;
 import Objects.Bullet;
@@ -35,7 +34,6 @@ public class Space extends JPanel implements Runnable{
 
 	public ArrayList<SpaceOBJ> objects = new ArrayList<SpaceOBJ>();
 	public ArrayList<Ship> selected = new ArrayList<Ship>();
-	public ArrayList<Ship> AIObjects=new ArrayList<Ship>();
 	private ArrayList<SpaceOBJ> toRemove=new ArrayList<SpaceOBJ>();
 	private ArrayList<Bullet> stoppedBullets=new ArrayList<Bullet>();
 	public ArrayList<Bullet> bullets=new ArrayList<Bullet>();
@@ -47,7 +45,6 @@ public class Space extends JPanel implements Runnable{
 	private Dimension dim;
 	private MotherShip player;
 	private Color team = Color.blue;
-	private AI ai;
 	
 	public Space(Game g, Dimension dim){
 		this.dim=dim;
