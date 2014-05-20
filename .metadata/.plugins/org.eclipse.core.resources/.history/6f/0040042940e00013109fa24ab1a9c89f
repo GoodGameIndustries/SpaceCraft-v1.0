@@ -177,11 +177,7 @@ public class Space extends JPanel implements Runnable{
 		
 		while(true){
 			ai.update(this);
-			for(Ship ship:ai.getNew()){
-				this.add(ship);
-				objects.add(ship);
-				ship.setID(objects.size()-1);
-			}
+			objects.addAll(ai.getFleet());
 			for(SpaceOBJ obj :objects){
 				obj.move();obj.control();
 				/*if(collide(obj)!=-1){
@@ -200,7 +196,6 @@ public class Space extends JPanel implements Runnable{
 				}
 				obj.recharge();
 			}
-			
 			ai.remove(toRemove);
 			
 			for(Bullet bullet:bullets){

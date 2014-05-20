@@ -176,17 +176,11 @@ public class Space extends JPanel implements Runnable{
 		ui.setBounds(-x,-y+dim.height-100,ui.getWidth(),ui.getHeight());
 		
 		while(true){
-			ai.update(this);
-			for(Ship ship:ai.getNew()){
-				this.add(ship);
-				objects.add(ship);
-				ship.setID(objects.size()-1);
-			}
 			for(SpaceOBJ obj :objects){
 				obj.move();obj.control();
-				/*if(collide(obj)!=-1){
+				if(collide(obj)!=-1){
 					toRemove.add(obj);toRemove.add(objects.get(collide(obj)));
-				}*/
+				}
 				if(obj.getAttack()){
 					if(obj.getTarget()!=null && !(obj.getTarget().team().equals(obj.team()))){
 						if(obj.ammoCount()!=0 && obj.fireAgain()){
@@ -200,8 +194,6 @@ public class Space extends JPanel implements Runnable{
 				}
 				obj.recharge();
 			}
-			
-			ai.remove(toRemove);
 			
 			for(Bullet bullet:bullets){
 				bullet.move();

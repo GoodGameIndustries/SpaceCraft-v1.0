@@ -1,0 +1,27 @@
+package AI;
+
+import java.awt.Color;
+import java.util.ArrayList;
+
+import Frame.*;
+import Ships.*;
+
+public class AI {
+	protected MotherShip mothership;
+	protected ArrayList<Ship> fleet=new ArrayList<Ship>();
+	
+	public AI(int x, int y, Space space){
+		mothership=new MotherShip(x,y,space,Color.red);
+	}
+	
+	public MotherShip getMotherShip(){return mothership;}
+	
+	public void update(Space space){
+		fleet.add(new Scout(space,mothership.getX(),mothership.getY(),Color.red));
+	}
+	
+	public ArrayList<Ship> getFleet(){
+		return fleet;
+	}
+	
+}
