@@ -43,10 +43,10 @@ public class MainMenu extends JDialog implements ActionListener{
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);//sets the frame to the center of the screen
 		this.setUndecorated(true);//undecorates the frame, no outline top bar and x
 		
-		play.setBackground(Color.WHITE);
-		play.setForeground(Color.BLACK);
-		howToPlay.setBackground(Color.WHITE);
-		howToPlay.setForeground(Color.BLACK);
+		play.setBackground(Color.DARK_GRAY);
+		play.setForeground(Color.WHITE);
+		howToPlay.setBackground(Color.DARK_GRAY);
+		howToPlay.setForeground(Color.WHITE);
 		
 		try {
 			bg = new JLabel(new ImageIcon(getScaledImage(ImageIO.read(new File("assets/mainMenu.png")),dim.width,dim.height)));
