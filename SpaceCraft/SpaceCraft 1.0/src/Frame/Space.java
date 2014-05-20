@@ -12,6 +12,7 @@ import Objects.Bullet;
 import Objects.Resource;
 import Objects.SpaceOBJ;
 import Objects.Sun;
+import Ships.AdvancedGather;
 import Ships.BasicGather;
 import Ships.BrickShip;
 import Ships.BubbleShip;
@@ -241,10 +242,8 @@ public class Space extends JPanel implements Runnable{
 					objects.add(bg);this.add(bg);bg.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==7){
-					/*
-					BrickShip brick=new BrickShip(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
-					objects.add(brick);this.add(brick);brick.setID(objects.size()-1);ui.reset();
-					*/
+					AdvancedGather bg=new AdvancedGather(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,player,Color.blue);
+					objects.add(bg);this.add(bg);bg.setID(objects.size()-1);ui.reset();
 				}
 			
 			
