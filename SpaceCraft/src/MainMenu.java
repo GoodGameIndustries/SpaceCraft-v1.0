@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -40,7 +41,12 @@ public class MainMenu extends JDialog implements ActionListener{
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);//sets the frame to the center of the screen
 		this.setUndecorated(true);//undecorates the frame, no outline top bar and x
 		
-		bg = new JLabel(new ImageIcon(getScaledImage(ImageIO.read(new File("assets/mainMenu.png")),dim.width,dim.height)));
+		try {
+			bg = new JLabel(new ImageIcon(getScaledImage(ImageIO.read(new File("assets/mainMenu.png")),dim.width,dim.height)));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		play.addActionListener(this);
 		
 		this.setLayout(null);
