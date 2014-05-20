@@ -40,11 +40,8 @@ public class Game extends JFrame implements MouseMotionListener,MouseListener,Ke
 	public Game(){
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		this.addKeyListener(this);
 		this.addMouseMotionListener(this);
 		this.addMouseListener(this);
-		
-		this.setFocusable(true);
 		
 		this.setSize(dim);//sets frame size
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);//sets the frame to the center of the screen
@@ -278,21 +275,20 @@ public class Game extends JFrame implements MouseMotionListener,MouseListener,Ke
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
 	    {
-	       new PauseMenu();
+	        new PauseMenu();
 	    }
-	    
 		
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		
+		// TODO Auto-generated method stub
 		
 	}
 

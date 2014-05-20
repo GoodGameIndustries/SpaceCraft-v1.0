@@ -46,6 +46,28 @@ public class MotherShip extends Ship{
 		paintOutline(g);
 	}
 	
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if(player){
+		if(e.getKeyChar()=='w'){movingUp=true;}
+		if(e.getKeyChar()=='s'){movingDown=true;}
+		if(e.getKeyChar()=='a'){movingLeft=true;}
+		if(e.getKeyChar()=='d'){movingRight=true;}
+		}
+		else{return;}
+	}
+	
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if(player){
+			if(e.getKeyChar()=='w'){movingUp=false;}
+			if(e.getKeyChar()=='s'){movingDown=false;}
+			if(e.getKeyChar()=='a'){movingLeft=false;}
+			if(e.getKeyChar()=='d'){movingRight=false;}
+			}
+			else{return;}
+	}
+	
 	public void control(){
 		if(player){
 		if(movingUp){y=y-20;}if(movingDown){y=y+20;}if(movingLeft){x=x-20;}if(movingRight){x=x+20;}
