@@ -28,12 +28,12 @@ public class Bullet extends Ship{
 	}
 	
 	public boolean stopped(){
-		return Math.abs(getDistance(target))<1;
+		return Math.abs(getDistance(target))<10;
 	}
 	
 	protected void calculateMove(SpaceOBJ t) {
 		double r=calculateDistance(t);
-		if(r>1){
+		if(r>5){
 			x=(int) (x+(int)(t.getX()-x)*speed*10/r);
 			y=(int) (y+(int)(t.getY()-y)*speed*10/r);
 		}

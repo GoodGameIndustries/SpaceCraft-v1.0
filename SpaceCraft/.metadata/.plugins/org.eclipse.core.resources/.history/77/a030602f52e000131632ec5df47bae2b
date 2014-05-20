@@ -258,12 +258,8 @@ public class Game extends JFrame implements MouseMotionListener,MouseListener,Ke
 			
 		}
 		else if((space.atSpot(e.getX()-space.getX(),e.getY()-space.getY()) != null) && (space.atSpot(e.getX()-space.getX(),e.getY()-space.getY()) instanceof Ship)){
-			if((space.atSpot(e.getX()-space.getX(),e.getY()-space.getY())).team().equals(space.getTeam())){
-				space.selected.add((Ship) space.atSpot(e.getX()-space.getX(),e.getY()-space.getY()));
-			}
-			
-			
-			//System.out.println("Ship selected");
+			space.selected.add((Ship) space.atSpot(e.getX()-space.getX(),e.getY()-space.getY()));
+			System.out.println("Ship selected");
 		}
 		
 		else{
