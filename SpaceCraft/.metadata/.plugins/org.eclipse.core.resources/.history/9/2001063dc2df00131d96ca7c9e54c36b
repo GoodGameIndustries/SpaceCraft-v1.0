@@ -9,9 +9,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JFrame;
 
 import Objects.Beacon;
-import Objects.Resource;
 import Objects.SpaceOBJ;
-import Ships.GatherShip;
 import Ships.Ship;
 
 /**
@@ -241,11 +239,7 @@ public class Game extends JFrame implements MouseMotionListener,MouseListener{
 			else{temp = space.atSpot(e.getX()-space.getX(),e.getY()-space.getY());}
 			
 			for(Ship obj : space.selected){
-				
-				if(obj instanceof GatherShip && temp instanceof Resource){((GatherShip) obj).setResourceSelected(temp);}
-				else{obj.setTarget(temp);}
-				
-				
+				obj.setTarget(temp);
 			}
 			
 		}

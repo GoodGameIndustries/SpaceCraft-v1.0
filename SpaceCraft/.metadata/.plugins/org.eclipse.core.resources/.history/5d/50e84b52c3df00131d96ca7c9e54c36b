@@ -8,10 +8,9 @@ import javax.swing.JPanel;
 import Objects.Asteroid;
 import Objects.Beacon;
 import Objects.Bullet;
-import Objects.Resource;
 import Objects.SpaceOBJ;
 import Objects.Sun;
-import Ships.BasicGather;
+import Ships.AttackShip;
 import Ships.BrickShip;
 import Ships.BubbleShip;
 import Ships.Destroyer;
@@ -58,7 +57,6 @@ public class Space extends JPanel implements Runnable{
 		genBases();
 		genPlanet();
 		genAsteroid();
-		genResources();
 		genShips();
 		
 		this.setBackground(Color.black);
@@ -76,13 +74,6 @@ public class Space extends JPanel implements Runnable{
 		
 	}
 	
-	private void genResources() {
-		for(int i = 0; i < 100; i++){
-			objects.add(new Resource((int)(Math.random()*5000),(int)(Math.random()*5000),(int)(Math.random()*50),(int)(Math.random()*50)));
-		}
-		
-	}
-
 	private void genShips() {
 		
 		
@@ -227,16 +218,6 @@ public class Space extends JPanel implements Runnable{
 				else if(ID==5){
 					BrickShip brick=new BrickShip(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
 					objects.add(brick);this.add(brick);brick.setID(objects.size()-1);ui.reset();
-				}
-				else if(ID==6){
-					BasicGather bg=new BasicGather(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,player,Color.blue);
-					objects.add(bg);this.add(bg);bg.setID(objects.size()-1);ui.reset();
-				}
-				else if(ID==7){
-					/*
-					BrickShip brick=new BrickShip(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
-					objects.add(brick);this.add(brick);brick.setID(objects.size()-1);ui.reset();
-					*/
 				}
 			
 			

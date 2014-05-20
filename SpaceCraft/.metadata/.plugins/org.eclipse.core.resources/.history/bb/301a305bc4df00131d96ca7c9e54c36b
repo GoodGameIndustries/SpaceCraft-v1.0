@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import Objects.Asteroid;
 import Objects.Beacon;
 import Objects.Bullet;
-import Objects.Resource;
 import Objects.SpaceOBJ;
 import Objects.Sun;
 import Ships.BasicGather;
@@ -58,7 +57,6 @@ public class Space extends JPanel implements Runnable{
 		genBases();
 		genPlanet();
 		genAsteroid();
-		genResources();
 		genShips();
 		
 		this.setBackground(Color.black);
@@ -76,13 +74,6 @@ public class Space extends JPanel implements Runnable{
 		
 	}
 	
-	private void genResources() {
-		for(int i = 0; i < 100; i++){
-			objects.add(new Resource((int)(Math.random()*5000),(int)(Math.random()*5000),(int)(Math.random()*50),(int)(Math.random()*50)));
-		}
-		
-	}
-
 	private void genShips() {
 		
 		

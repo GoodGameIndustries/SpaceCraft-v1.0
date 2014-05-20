@@ -84,13 +84,5 @@ public class MotherShip extends Ship{
 		space.objects.add(s);
 		
 	}
-
-	public int getTotalRescources() {
-		return totalRescources;
-	}
-
-	public void setTotalRescources(int totalRescources) {
-		this.totalRescources = totalRescources;
-	}
 	
 }

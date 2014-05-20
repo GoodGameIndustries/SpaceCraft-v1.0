@@ -3,3 +3,5 @@
 1400546455443	Delete element
 1400546481514	Move compilation unit
 1400546493492	Move compilation units
+1400551037450	Encapsulate field 'resourceSelected'
+1400552473926	Encapsulate field 'totalRescources'
