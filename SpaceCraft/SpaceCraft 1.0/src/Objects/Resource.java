@@ -1,0 +1,64 @@
+package Objects;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+/**
+ * 
+ */
+
+/**
+ * @author Emmett Deen
+ * @version 1.0
+ * @date May 12, 2014
+ */
+public class Resource extends SpaceOBJ{
+
+	private int resources;
+	private int xLim;
+	private int yLim;
+	private int mass=0;
+	
+	public Resource(int x,int y, int xLim, int yLim){
+		this.x = x;
+		this.y = y;
+		this.xLim = xLim;
+		this.yLim = yLim;
+		
+		resources = (xLim*yLim)*25;
+		
+		this.setBounds(x-xLim/2,y-yLim/2,xLim,yLim);
+	}
+	
+	public int gather(){
+		if(resources >= 25){
+			resources-=25;
+			xLim--;
+			yLim--;
+			return 25;
+		}
+		else{
+			return resources;
+		}
+		
+		
+	}
+	
+	public int getMass(){return mass;}
+	
+	public void move(){}
+	
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+		
+		g2.setColor(Color.cyan);
+		g2.fillRect(0,0,xLim,yLim);
+	}
+
+	public int getResources() {
+		// TODO Auto-generated method stub
+		return resources;
+	}
+	
+}
