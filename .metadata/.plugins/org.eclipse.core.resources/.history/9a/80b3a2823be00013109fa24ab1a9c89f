@@ -12,7 +12,6 @@ import Objects.Bullet;
 import Objects.Resource;
 import Objects.SpaceOBJ;
 import Objects.Sun;
-import Ships.AdvancedGather;
 import Ships.BasicGather;
 import Ships.BrickShip;
 import Ships.BubbleShip;
@@ -59,7 +58,6 @@ public class Space extends JPanel implements Runnable{
 		y=0;
 		
 		
-		genAI();
 		genBases();
 		genPlanet();
 		genAsteroid();
@@ -117,8 +115,8 @@ public class Space extends JPanel implements Runnable{
 	
 	
 	private void genBases() {
-		//objects.add(new MotherShip(4500,2500,this,Color.red));
-		objects.add(ai.getMotherShip());
+		objects.add(new MotherShip(4500,2500,this,Color.red));
+		
 		player=new MotherShip(500,2500,this,Color.blue);
 		objects.add(player);
 		ui=new ShipsPanel(this,g,player);
@@ -131,10 +129,6 @@ public class Space extends JPanel implements Runnable{
 
 	private void genAsteroid(){
 		objects.add(new Asteroid(500,500,10,10,this));
-	}
-	
-	private void genAI(){
-		ai=new AI(4500,2500,this);
 	}
 	
 	
@@ -242,8 +236,10 @@ public class Space extends JPanel implements Runnable{
 					objects.add(bg);this.add(bg);bg.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==7){
-					AdvancedGather bg=new AdvancedGather(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,player,Color.blue);
-					objects.add(bg);this.add(bg);bg.setID(objects.size()-1);ui.reset();
+					/*
+					BrickShip brick=new BrickShip(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
+					objects.add(brick);this.add(brick);brick.setID(objects.size()-1);ui.reset();
+					*/
 				}
 			
 			
