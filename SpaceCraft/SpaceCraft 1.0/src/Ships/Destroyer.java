@@ -2,6 +2,8 @@ package Ships;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import Frame.Space;
+
 /**
  * 
  */
@@ -14,8 +16,8 @@ import java.awt.Graphics;
 public class Destroyer extends AttackShip{
 
 	
-	public Destroyer(int x, int y, boolean player) {
-		super(x, y,50,50, player);
+	public Destroyer(Space s,int x, int y, Color t) {
+		super(s,x, y,50,50, t);
 		power = 5;
 		speed = 3;
 		health = 250;
@@ -25,5 +27,6 @@ public class Destroyer extends AttackShip{
 	public void paintComponent(Graphics g){
 		g.setColor(Color.orange);
 		g.fillOval(0,0,50,50);
+		paintOutline(g);
 	}
 }

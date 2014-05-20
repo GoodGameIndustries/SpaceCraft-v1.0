@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import Frame.Space;
 import Ships.Ship;
 
 
@@ -10,8 +11,8 @@ public class Bullet extends Ship{
 	
 	private boolean stopped=false;
 	
-	public Bullet(int x, int y) {
-		super(x, y,5,5,false);
+	public Bullet(Space s,int x, int y) {
+		super(s,x, y,5,5,Color.white);
 		speed=2;
 	}
 	

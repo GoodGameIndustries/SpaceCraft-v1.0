@@ -1,4 +1,7 @@
 package Ships;
+import java.awt.Color;
+
+import Frame.Space;
 import Objects.Resource;
 
 /**
@@ -16,8 +19,8 @@ public class GatherShip extends Ship{
 	private MotherShip homeShip;
 	private int resourcesCarrying = 0;
 	
-	public GatherShip(int x, int y, MotherShip homeShip,boolean b) {
-		super(x, y,20,20,b);
+	public GatherShip(Space s,int x, int y, MotherShip homeShip,Color b) {
+		super(s,x, y,20,20,b);
 		this.homeShip = homeShip;
 	}
 

@@ -14,19 +14,18 @@ import Frame.Space;
 
 public class MotherShip extends Ship{
 
-	private Color c;
+	
 	private int totalRescources = 0;
 	private int MASS =200;
 	private boolean player=false;
 	private boolean movingUp=false, movingDown=false,movingLeft=false,movingRight=false;
 	private Space space;
 	
-	public MotherShip(int x,int y,Color c,Space space,boolean player){
-		super(x,y,50,50,player);
-		this.player=player;
+	public MotherShip(int x,int y,Space space,Color t){
+		super(space,x,y,50,50,t);
+		this.team=t;
 		this.x = x;
 		this.y = y;
-		this.c = c;
 		this.space = space;
 		
 		name = "MotherShip";
@@ -42,8 +41,9 @@ public class MotherShip extends Ship{
 	
 	public void paintComponent(Graphics g){
 		Graphics g2 = (Graphics2D) g;
-		g2.setColor(c);
+		g2.setColor(team);
 		g2.fillRect(0,0,xLim,yLim);
+		paintOutline(g);
 	}
 	
 	public void keyPressed(KeyEvent e) {

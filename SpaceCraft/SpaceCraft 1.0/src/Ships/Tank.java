@@ -2,6 +2,8 @@ package Ships;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import Frame.Space;
+
 /**
  * 
  */
@@ -14,8 +16,8 @@ import java.awt.Graphics;
 public class Tank extends AttackShip{
 
 	
-	public Tank(int x, int y, boolean player) {
-		super(x, y,100,100, player);
+	public Tank(Space s,int x, int y, Color t) {
+		super(s,x, y,100,100, t);
 		power = 10;
 		speed = 1;
 		health = 500;
@@ -25,5 +27,6 @@ public class Tank extends AttackShip{
 	public void paintComponent(Graphics g){
 		g.setColor(Color.DARK_GRAY);
 		g.fillOval(0,0,100,100);
+		paintOutline(g);
 	}
 }

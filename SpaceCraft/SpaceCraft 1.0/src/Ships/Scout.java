@@ -2,6 +2,8 @@ package Ships;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import Frame.Space;
+
 /**
  * 
  */
@@ -14,8 +16,8 @@ import java.awt.Graphics;
 public class Scout extends AttackShip{
 
 	
-	public Scout(int x, int y, boolean player) {
-		super(x, y,25,25, player);
+	public Scout(Space s,int x, int y, Color t) {
+		super(s,x, y,25,25, t);
 		power = 1;
 		speed = 5;
 		health = 100;
@@ -25,6 +27,7 @@ public class Scout extends AttackShip{
 	public void paintComponent(Graphics g){
 		g.setColor(Color.white);
 		g.fillOval(0,0,25,25);
+		paintOutline(g);
 	}
 	
 

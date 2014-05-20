@@ -1,4 +1,6 @@
 package Objects;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class SpaceOBJ extends JLabel implements KeyListener{
 	private double[] vec=new double[2];
 	private final double G=1;
 	private SpaceOBJ target=null;
-	protected boolean player;
+	protected Color team = Color.white;
 	protected Space space;
 	protected int recharge=1;
 	protected boolean alive=true;
@@ -163,9 +165,9 @@ public class SpaceOBJ extends JLabel implements KeyListener{
 	
 	
 
-	public boolean enemy() {
+	public Color team() {
 		// TODO Auto-generated method stub
-		return player;
+		return team;
 	}
 	
 	
@@ -187,4 +189,9 @@ public class SpaceOBJ extends JLabel implements KeyListener{
 	public void destoryed(){alive=false;}
 	
 	public boolean alive(){return alive;}
+	
+	protected void paintOutline(Graphics g){
+		g.setColor(team);
+		g.drawRect(0, 0, xLim-1, yLim-1);
+	}
 }

@@ -2,6 +2,8 @@ package Ships;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import Frame.Space;
+
 /**
  * 
  */
@@ -13,8 +15,8 @@ import java.awt.Graphics;
  */
 public class BubbleShip extends DefenseShip{
 
-	public BubbleShip(int x, int y,boolean b) {
-		super(x, y,75,75,b);
+	public BubbleShip(Space s,int x, int y,Color b) {
+		super(s,x, y,75,75,b);
 		shield = 500;
 		speed = 3;
 		health = 100;
@@ -27,6 +29,7 @@ public class BubbleShip extends DefenseShip{
 		super.paintComponent(g);
 		g.setColor(Color.blue);
 		g.fillOval(0,0,xLim,yLim);
+		paintOutline(g);
 	}
 
 }

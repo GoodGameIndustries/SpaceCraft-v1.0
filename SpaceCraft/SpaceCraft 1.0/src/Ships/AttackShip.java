@@ -1,6 +1,8 @@
 package Ships;
+import java.awt.Color;
 import java.util.ArrayList;
 
+import Frame.Space;
 import Objects.Bullet;
 
 /**
@@ -20,28 +22,28 @@ public class AttackShip extends Ship{
 	protected boolean isAttack = false;
 	
 	
-	public AttackShip(int x, int y,boolean player) {
-		super(x, y,player);
+	public AttackShip(Space s,int x, int y,Color t) {
+		super(s,x, y,t);
 		name = "AttackShip";
 		for(int i=0;i<500;i++){
-			ammoBank.add(new Bullet(x,y));
+			ammoBank.add(new Bullet(s,x,y));
 		}
 		if(ammoBank.size()>0){System.out.println("ammo left");}
 		// TODO Auto-generated constructor stub
 	}
 	
-	public AttackShip(int x, int y,int xLim,int yLim,boolean player) {
-		super(x, y,xLim,yLim,player);
+	public AttackShip(Space s,int x, int y,int xLim,int yLim,Color t) {
+		super(s,x, y,xLim,yLim,t);
 		name = "AttackShip";
 		for(int i=0;i<500;i++){
-			ammoBank.add(new Bullet(x,y));
+			ammoBank.add(new Bullet(s,x,y));
 		}
 		// TODO Auto-generated constructor stub
 	}
 
 	
 	public Bullet fire(){
-		Bullet bullet=new Bullet(x,y);
+		Bullet bullet=new Bullet(space,x,y);
 		bullet.setTarget(target);
 		return bullet;
 	}

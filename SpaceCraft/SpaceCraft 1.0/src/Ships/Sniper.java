@@ -2,6 +2,8 @@ package Ships;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import Frame.Space;
+
 /**
  * 
  */
@@ -14,8 +16,8 @@ import java.awt.Graphics;
 public class Sniper extends AttackShip{
 
 	
-	public Sniper(int x, int y, boolean player) {
-		super(x, y,35,35, player);
+	public Sniper(Space s,int x, int y, Color t) {
+		super(s,x, y,35,35, t);
 		power = 10;
 		speed = 4;
 		health = 175;
@@ -25,5 +27,6 @@ public class Sniper extends AttackShip{
 	public void paintComponent(Graphics g){
 		g.setColor(new Color(0,50,0));
 		g.fillOval(0,0,35,35);
+		paintOutline(g);
 	}
 }

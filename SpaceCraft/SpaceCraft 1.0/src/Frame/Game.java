@@ -235,7 +235,7 @@ public class Game extends JFrame implements MouseMotionListener,MouseListener{
 		if(e.isMetaDown() && space.selected.size()>0){
 			SpaceOBJ temp = null;
 		
-			if(space.atSpot(e.getX()-space.getX(),e.getY()-space.getY()) == null){temp = new Beacon(e.getX()-space.getX(),e.getY()-space.getY());}
+			if(space.atSpot(e.getX()-space.getX(),e.getY()-space.getY()) == null){temp = new Beacon(e.getX()-space.getX(),e.getY()-space.getY(),space.getTeam());}
 			else{temp = space.atSpot(e.getX()-space.getX(),e.getY()-space.getY());}
 			
 			for(Ship obj : space.selected){

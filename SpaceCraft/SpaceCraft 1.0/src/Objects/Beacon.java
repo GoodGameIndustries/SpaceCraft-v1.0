@@ -1,4 +1,7 @@
 package Objects;
+
+import java.awt.Color;
+
 /**
  * 
  */
@@ -10,7 +13,8 @@ package Objects;
  */
 public class Beacon extends SpaceOBJ{
 	
-	public Beacon(int x, int y){
+	public Beacon(int x, int y,Color t){
+		this.team = t;
 		this.x = x;
 		this.y = y;
 	}

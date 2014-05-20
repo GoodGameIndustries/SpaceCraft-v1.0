@@ -43,6 +43,7 @@ public class Space extends JPanel implements Runnable{
 	public ShipsPanel ui;
 	private Dimension dim;
 	private MotherShip player;
+	private Color team = Color.blue;
 	
 	public Space(Game g, Dimension dim){
 		this.dim=dim;
@@ -74,7 +75,7 @@ public class Space extends JPanel implements Runnable{
 	}
 	
 	private void genShips() {
-		objects.add(new AttackShip(600,600,15,15,true));
+		
 		
 	}
 
@@ -102,9 +103,9 @@ public class Space extends JPanel implements Runnable{
 	
 	
 	private void genBases() {
-		objects.add(new MotherShip(4500,2500,Color.red,this,false));
+		objects.add(new MotherShip(4500,2500,this,Color.red));
 		
-		player=new MotherShip(500,2500,Color.blue,this,true);
+		player=new MotherShip(500,2500,this,Color.blue);
 		objects.add(player);
 		ui=new ShipsPanel(this,g,player);
 		
@@ -163,10 +164,10 @@ public class Space extends JPanel implements Runnable{
 					toRemove.add(obj);toRemove.add(objects.get(collide(obj)));
 				}
 				if(obj.getAttack()){
-					if(obj.getTarget()!=null && obj.getTarget().enemy()){
+					if(obj.getTarget()!=null && !(obj.getTarget().team().equals(obj.team()))){
 						if(obj.ammoCount()!=0 && obj.fireAgain()){
 							Bullet bullet=obj.getAmmoBank().get(0);
-							bullet.setTarget(new Beacon(obj.getTarget().getX(),obj.getTarget().getY()));bullet.setX(obj.getX()+20);bullet.setY(obj.getY()+20);
+							bullet.setTarget(new Beacon(obj.getTarget().getX(),obj.getTarget().getY(),team));bullet.setX(obj.getX()+20);bullet.setY(obj.getY()+20);
 							this.add(bullet);bullets.add(bullet);
 							obj.ammoUsed();
 						}
@@ -195,27 +196,27 @@ public class Space extends JPanel implements Runnable{
 			
 			int ID=ui.getSelectedShip();
 				if(ID==0){
-					Scout scout=new Scout(player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,true);
+					Scout scout=new Scout(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
 					this.add(scout);objects.add(scout);scout.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==1){
-					Destroyer destroyer=new Destroyer(player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,true);
+					Destroyer destroyer=new Destroyer(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
 					objects.add(destroyer);this.add(destroyer);destroyer.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==2){
-					Sniper sniper=new Sniper(player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,true);
+					Sniper sniper=new Sniper(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
 					objects.add(sniper);this.add(sniper);sniper.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==3){
-					Tank tank=new Tank(player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,true);
+					Tank tank=new Tank(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
 					objects.add(tank);this.add(tank);tank.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==4){
-					BubbleShip bubble=new BubbleShip(player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,true);
+					BubbleShip bubble=new BubbleShip(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
 					objects.add(bubble);this.add(bubble);bubble.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==5){
-					BrickShip brick=new BrickShip(player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,true);
+					BrickShip brick=new BrickShip(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
 					objects.add(brick);this.add(brick);brick.setID(objects.size()-1);ui.reset();
 				}
 			
@@ -251,5 +252,10 @@ public class Space extends JPanel implements Runnable{
 	public int getResources(){return Resources;}
 	
 	public void setResources(int resources){Resources=resources;}
+
+	public Color getTeam() {
+		// TODO Auto-generated method stub
+		return team;
+	}
 	
 }

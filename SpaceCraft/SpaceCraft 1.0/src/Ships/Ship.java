@@ -3,6 +3,7 @@ package Ships;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import Frame.Space;
 import Objects.SpaceOBJ;
 
 /**
@@ -21,20 +22,21 @@ public class Ship extends SpaceOBJ{
 	protected int health = 1;
 	protected String name = "Ship";
 	
-	public Ship(int x, int y, boolean player){
+	public Ship(Space s,int x, int y, Color team){
 		this.x =x;
 		this.y =y;
 		xLim =10;
 		yLim = 10;
-		this.player=player;
+		this.team=team;
 		this.setBounds(x,y,xLim,yLim);
 	}
-	public Ship(int x, int y,int length, int width,boolean player){
+	public Ship(Space s,int x, int y,int length, int width,Color team){
 		this.x =x;
 		this.y =y;
+		space = s;
 		xLim = length;
 		yLim = width;
-		this.player=player;
+		this.team=team;
 		this.setBounds(x,y,length,width);
 	}
 	
@@ -50,7 +52,7 @@ public class Ship extends SpaceOBJ{
 	}
 	
 	public void move(){
-		if(target != null && player){
+		if(target != null && (team.equals(space.getTeam())||team.equals(Color.white))){
 			calculateMove(target);
 		}
 	}
@@ -61,7 +63,7 @@ public class Ship extends SpaceOBJ{
 	
 	protected void calculateMove(SpaceOBJ t) {
 		double r=calculateDistance(t);
-		if(r>10){
+		if(r>100){
 			x=(int) (x+(int)(t.getX()-x)*speed*10/r);
 			y=(int) (y+(int)(t.getY()-y)*speed*10/r);
 		}

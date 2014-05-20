@@ -2,6 +2,8 @@ package Ships;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import Frame.Space;
+
 /**
  * 
  */
@@ -13,8 +15,8 @@ import java.awt.Graphics;
  */
 public class BrickShip extends DefenseShip{
 
-	public BrickShip(int x, int y,boolean b) {
-		super(x, y,150,150,b);
+	public BrickShip(Space s,int x, int y,Color t) {
+		super(s,x, y,150,150,t);
 		shield = 1000;
 		speed = 1;
 		health = 250;
@@ -28,6 +30,7 @@ public class BrickShip extends DefenseShip{
 		super.paintComponent(g);
 		g.setColor(Color.GRAY);
 		g.fillRect(0,0,xLim,yLim);
+		paintOutline(g);
 	}
 
 }
