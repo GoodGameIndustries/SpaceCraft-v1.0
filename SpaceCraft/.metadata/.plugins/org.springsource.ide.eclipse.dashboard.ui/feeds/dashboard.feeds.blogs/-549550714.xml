@@ -5,7 +5,32 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2014-05-19T12:32:00Z</updated>
+  <updated>2014-05-20T15:20:21Z</updated>
+  <entry>
+    <title>Spring Framework 4.0.5 &amp; 3.2.9 released - next stop: 4.1</title>
+    <link rel="alternate" href="https://spring.io/blog/2014/05/20/spring-framework-4-0-5-3-2-9-released-next-stop-4-1" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Juergen Hoeller</name>
+    </author>
+    <id>tag:spring.io,2014-05-20:1577</id>
+    <updated>2014-05-20T15:20:21Z</updated>
+    <content type="html">&lt;p&gt;Dear Spring community,&lt;/p&gt;
+
+&lt;p&gt;It's my pleasure to announce that Spring Framework 4.0.5 and 3.2.9 have been released. Both of those are designed as a final feature release in the respective line - we will only consider further releases from the 4.0.x and 3.2.x branches in case of serious bugs now.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-framework/"&gt;http://projects.spring.io/spring-framework/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Spring Framework 3.2.9 comes with a repackaged ASM 5.0.2 and is therefore capable of basic Java 8 bytecode processing. However, specific Java 8 feature support - JSR-310 date-time, repeatable annotations, etc - is exclusive to the Spring Framework 4.x line.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://jira.spring.io/browse/SPR/?selectedTab=com.atlassian.jira.jira-projects-plugin:roadmap-panel"&gt;SPR roadmap at jira.spring.io&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The Spring Framework team is busily working towards the 4.1 release now, with a release candidate scheduled for end of June. Note that Spring Framework 4.1 is a rapid follow-up release which will go GA in July, immediately superseding the 4.0.x line.&lt;/p&gt;
+
+&lt;p&gt;Cheers,&lt;/p&gt;
+
+&lt;p&gt;Juergen&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Demo: Zero to Stream processing in 7 minutes with Spring XD</title>
     <link rel="alternate" href="https://spring.io/blog/2014/05/19/demo-zero-to-stream-processing-in-7-minutes-with-spring-xd" />
@@ -1005,30 +1030,6 @@ new &lt;a href="https://spring.io/guides?filter=yarn"&gt;Spring IO Guides&lt;/a&
 &lt;p&gt;We're now approaching the home stretch to GA release which means we're going to focus on cleanup tasks like bug fixing, reference documentation, internal refactorings and code cleanups for the remaining two sprints. We're shooting for a final release at the end of May. Meanwhile, we're happy to get feedback in our &lt;a href="jira.springsource.org"&gt;JIRA&lt;/a&gt; or via &lt;a href="https://twitter.com/springdata"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;If you want to lear more about Spring Data, make sure you register for our annual &lt;a href="http://www.springone2gx.com"&gt;SpringOne conference&lt;/a&gt; taking place in Dallas, TX in early September. And while you're at it: Spring Boot is nominated as most innovative Java project for the JAX 2014 awards. Cast your &lt;a href="http://jax.de/awards2014/"&gt;vote&lt;/a&gt;!&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Framework 4.0.4 released</title>
-    <link rel="alternate" href="https://spring.io/blog/2014/05/01/spring-framework-4-0-4-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Juergen Hoeller</name>
-    </author>
-    <id>tag:spring.io,2014-04-30:1550</id>
-    <updated>2014-05-01T08:44:00Z</updated>
-    <content type="html">&lt;p&gt;Dear Spring community,&lt;/p&gt;
-
-&lt;p&gt;It's my pleasure to announce that Spring Framework 4.0.4 is now available. This is a straightforward maintenance release after 4.0.3, primarily fixing regressions and other recent bugs. It also comes with a range of minor dependency updates (including ASM 5.0.2).&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-framework/"&gt;http://projects.spring.io/spring-framework/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Aside from working towards our 4.1 release in July, we intend to do a 4.0.5 &amp;amp; 3.2.9 pair of releases in late May. Both of the latter are the last planned releases in the respective line. So if you have any critical bug reports to consider for those branches still, please let us know - through creating new JIRA issues or through escalating existing JIRA issues...&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="https://jira.spring.io/browse/SPR/"&gt;https://jira.spring.io/browse/SPR/&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr&gt;&lt;p&gt;As a side note, Spring has also been nominated for a JAX Innovation award. If you've not done so already, please consider voting for Spring Boot at &lt;a href="http://jax.de/awards2014/"&gt;http://jax.de/awards2014/&lt;/a&gt;  &lt;/p&gt;
-
-&lt;p&gt;Cheers,&lt;br&gt;
-Juergen&lt;/p&gt;</content>
   </entry>
 </feed>
 
