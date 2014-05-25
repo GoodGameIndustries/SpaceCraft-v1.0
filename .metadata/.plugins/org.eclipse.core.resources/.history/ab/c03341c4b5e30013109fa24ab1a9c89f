@@ -34,8 +34,6 @@ import Ships.Tank;
  */
 public class Space extends JPanel implements Runnable{
 
-	private ArrayList<SpaceOBJ> allObjects=new ArrayList<SpaceOBJ>();
-	
 	public ArrayList<SpaceOBJ> objects = new ArrayList<SpaceOBJ>();
 	public ArrayList<Ship> selected = new ArrayList<Ship>();
 	public ArrayList<Ship> AIObjects=new ArrayList<Ship>();
@@ -61,11 +59,11 @@ public class Space extends JPanel implements Runnable{
 		y=0;
 		
 		
-		genResources();
 		genAI();
 		genBases();
 		genPlanet();
 		genAsteroid();
+		genResources();
 		genShips();
 		
 		this.setBackground(Color.black);
@@ -86,7 +84,6 @@ public class Space extends JPanel implements Runnable{
 	private void genResources() {
 		for(int i = 0; i < 100; i++){
 			objects.add(new Resource((int)(Math.random()*5000),(int)(Math.random()*5000),(int)(Math.random()*50),(int)(Math.random()*50)));
-			allObjects.addAll(objects);
 		}
 		
 	}
@@ -100,7 +97,6 @@ public class Space extends JPanel implements Runnable{
 		for(int i = 0; i <objects.size(); i++){
 			this.add(objects.get(i));
 			objects.get(i).setID(i);
-			allObjects.add(objects.get(i));
 		}
 	}
 
@@ -184,7 +180,6 @@ public class Space extends JPanel implements Runnable{
 			for(Ship ship:ai.getNew()){
 				this.add(ship);
 				objects.add(ship);
-				allObjects.add(ship);
 				ship.setID(objects.size()-1);
 			}
 			for(SpaceOBJ obj :objects){
@@ -197,7 +192,7 @@ public class Space extends JPanel implements Runnable{
 						if(obj.ammoCount()!=0 && obj.fireAgain()){
 							Bullet bullet=obj.getAmmoBank().get(0);
 							bullet.setTarget(new Beacon(obj.getTarget().getX(),obj.getTarget().getY(),team));bullet.setX(obj.getX()+20);bullet.setY(obj.getY()+20);
-							this.add(bullet);bullets.add(bullet);allObjects.add(bullet);
+							this.add(bullet);bullets.add(bullet);
 							obj.ammoUsed();
 						}
 					
@@ -228,35 +223,35 @@ public class Space extends JPanel implements Runnable{
 			int ID=ui.getSelectedShip();
 				if(ID==0){
 					Scout scout=new Scout(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
-					this.add(scout);objects.add(scout);scout.setID(objects.size()-1);allObjects.add(scout);ui.reset();
+					this.add(scout);objects.add(scout);scout.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==1){
 					Destroyer destroyer=new Destroyer(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
-					objects.add(destroyer);this.add(destroyer);destroyer.setID(objects.size()-1);allObjects.add(destroyer);ui.reset();
+					objects.add(destroyer);this.add(destroyer);destroyer.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==2){
 					Sniper sniper=new Sniper(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
-					objects.add(sniper);this.add(sniper);sniper.setID(objects.size()-1);allObjects.add(sniper);ui.reset();
+					objects.add(sniper);this.add(sniper);sniper.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==3){
 					Tank tank=new Tank(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
-					objects.add(tank);this.add(tank);tank.setID(objects.size()-1);allObjects.add(tank);ui.reset();
+					objects.add(tank);this.add(tank);tank.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==4){
 					BubbleShip bubble=new BubbleShip(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
-					objects.add(bubble);this.add(bubble);bubble.setID(objects.size()-1);allObjects.add(bubble);ui.reset();
+					objects.add(bubble);this.add(bubble);bubble.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==5){
 					BrickShip brick=new BrickShip(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
-					objects.add(brick);this.add(brick);brick.setID(objects.size()-1);allObjects.add(brick);ui.reset();
+					objects.add(brick);this.add(brick);brick.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==6){
 					BasicGather bg=new BasicGather(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,player,Color.blue);
-					objects.add(bg);this.add(bg);bg.setID(objects.size()-1);allObjects.add(bg);ui.reset();
+					objects.add(bg);this.add(bg);bg.setID(objects.size()-1);ui.reset();
 				}
 				else if(ID==7){
 					AdvancedGather bg=new AdvancedGather(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,player,Color.blue);
-					objects.add(bg);this.add(bg);bg.setID(objects.size()-1);allObjects.add(bg);ui.reset();
+					objects.add(bg);this.add(bg);bg.setID(objects.size()-1);ui.reset();
 				}
 			
 			
@@ -285,7 +280,7 @@ public class Space extends JPanel implements Runnable{
 	}
 	
 	public ArrayList<SpaceOBJ> allObjects(){
-		return allObjects;
+		return objects;
 	}
 	
 	public int getResources(){return Resources;}
