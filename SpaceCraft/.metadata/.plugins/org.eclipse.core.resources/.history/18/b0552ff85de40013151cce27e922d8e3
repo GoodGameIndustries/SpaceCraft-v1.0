@@ -46,7 +46,7 @@ public class GatherShip extends Ship{
 			//space.player.setTotalResources(space.player.getTotalResources()+resourcesCarrying);
 			resourcesCarrying = 0;
 			System.out.println(space.player.getTotalResources());
-			space.ui.build.resourceCount.setText(""+space.player.getTotalResources());
+			space.ui.build.resourceCount.repaint();
 		}
 		else if(resourcesCarrying == 0 && resourceSelected!=null){
 			target = resourceSelected;

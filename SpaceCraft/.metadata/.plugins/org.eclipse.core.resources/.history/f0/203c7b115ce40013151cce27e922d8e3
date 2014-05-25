@@ -63,11 +63,11 @@ public class MotherShip extends Ship{
 		
 	}
 
-	public int getTotalResources() {
+	public int getTotalRescources() {
 		return totalRescources;
 	}
 
-	public void setTotalResources(int totalRescources) {
+	public void setTotalRescources(int totalRescources) {
 		this.totalRescources = totalRescources;
 	}
 	
