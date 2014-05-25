@@ -43,10 +43,10 @@ public class Space extends JPanel implements Runnable{
 	private static int[][] vec; 
 	private int x,y,xLim=5000,yLim=5000;
 	public Game g;
-	private int Resources=100;
+	private int resources=0;
 	public ShipsPanel ui;
 	private Dimension dim;
-	private MotherShip player;
+	public MotherShip player;
 	private Color team = Color.blue;
 	private AI ai;
 	
@@ -172,6 +172,10 @@ public class Space extends JPanel implements Runnable{
 
 	@Override
 	public void run() {
+		//player.setTotalRescources(resources);
+		resources = player.getTotalRescources();
+		ui.build.repaint();
+		
 		setY(-2500+dim.height/2);
 		ui.setBounds(-x,-y+dim.height-100,ui.getWidth(),ui.getHeight());
 		
@@ -283,9 +287,9 @@ public class Space extends JPanel implements Runnable{
 		return objects;
 	}
 	
-	public int getResources(){return Resources;}
+	public int getResources(){return resources;}
 	
-	public void setResources(int resources){Resources=resources;}
+	public void setResources(int resources){this.resources=resources;}
 
 	public Color getTeam() {
 		// TODO Auto-generated method stub

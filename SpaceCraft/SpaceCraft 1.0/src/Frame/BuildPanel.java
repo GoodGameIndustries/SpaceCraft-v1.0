@@ -53,6 +53,18 @@ public class BuildPanel extends JPanel implements ActionListener{
 	}
 
 	private void setup() {
+		this.add(new JLabel("Resources: "));
+		this.add(new JLabel(""+ space.getResources()));
+		this.add(new JLabel());
+		this.add(new JLabel());
+		this.add(new JLabel());
+		this.add(new JLabel("Cost: "));
+		this.add(new JLabel("100"));
+		this.add(new JLabel("300"));
+		this.add(new JLabel("500"));
+		this.add(new JLabel("750"));
+		
+		
 		this.add(new JLabel("Attack Ships"));
 		for(int i = 0; i < attackButtons.length; i++){
 			this.add(attackButtons[i]);

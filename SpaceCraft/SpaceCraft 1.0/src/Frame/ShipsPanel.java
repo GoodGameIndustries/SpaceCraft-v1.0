@@ -13,7 +13,7 @@ public class ShipsPanel extends JPanel{
 
 	private Space space;
 	private SelectedPanel selected;
-	private BuildPanel build;
+	public BuildPanel build;
 	private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();//screen size dimension
 	private JScrollPane scroll;
 	private MotherShip player;
@@ -48,5 +48,7 @@ public class ShipsPanel extends JPanel{
 	public int getSelectedShip(){return build.getShipSelected();}
 	
 	public void reset(){build.reset();}
+
+	
 	
 }

@@ -67,7 +67,7 @@ public class Ship extends SpaceOBJ{
 			x=(int) (x+(int)(t.getX()-x)*speed*10/r);
 			y=(int) (y+(int)(t.getY()-y)*speed*10/r);
 		}
-		System.out.println("<"+x+","+y+">");
+		//System.out.println("<"+x+","+y+">");
 	}
 	
 	public SpaceOBJ getTarget(){return target;}

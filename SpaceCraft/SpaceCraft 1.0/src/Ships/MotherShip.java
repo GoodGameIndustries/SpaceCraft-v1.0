@@ -15,7 +15,7 @@ import Frame.Space;
 public class MotherShip extends Ship{
 
 	
-	private int totalRescources = 0;
+	private int totalRescources = 1000;
 	private int MASS =200;
 	private boolean player=false;
 	private boolean movingUp=false, movingDown=false,movingLeft=false,movingRight=false;
