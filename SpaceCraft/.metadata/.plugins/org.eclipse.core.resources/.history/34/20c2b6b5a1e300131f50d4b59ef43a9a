@@ -44,9 +44,7 @@ public class Game extends JFrame implements MouseMotionListener,MouseListener,Ke
 		this.addMouseMotionListener(this);
 		this.addMouseListener(this);
 		
-		
 		this.setFocusable(true);
-		
 		
 		space.addKeyListener(this);
 		space.setFocusable(true);

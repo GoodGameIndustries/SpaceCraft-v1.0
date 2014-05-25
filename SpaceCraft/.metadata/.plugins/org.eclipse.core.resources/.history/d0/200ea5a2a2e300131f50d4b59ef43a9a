@@ -31,7 +31,6 @@ public class SelectedPanel extends JPanel{
 	
 	selectedStuff= new JTextArea(dim.width/2, 99);
 	selectedStuff.setEditable(false);
-	selectedStuff.addKeyListener(space.g);
 	this.add(selectedStuff);
 	
 	//updatePanel();
