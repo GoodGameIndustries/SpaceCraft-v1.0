@@ -282,7 +282,7 @@ public class Space extends JPanel implements Runnable{
 					}
 				}
 			
-			ui.build.resourceCount.setText(""+player.getTotalResources());
+			
 			repaint();
 			ui.update();
 			try {
