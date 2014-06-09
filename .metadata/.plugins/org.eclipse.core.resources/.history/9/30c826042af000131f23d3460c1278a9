@@ -61,7 +61,7 @@ public class Space extends JPanel implements Runnable{
 		y=0;
 		
 		
-		genResources();
+		//genResources();
 		genAI();
 		genBases();
 		genPlanet();

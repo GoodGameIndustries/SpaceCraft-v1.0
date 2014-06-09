@@ -61,7 +61,7 @@ public class Space extends JPanel implements Runnable{
 		y=0;
 		
 		
-		genResources();
+		//genResources();
 		genAI();
 		genBases();
 		genPlanet();
@@ -104,13 +104,13 @@ public class Space extends JPanel implements Runnable{
 		}
 	}
 
-	private SpaceOBJ collide(SpaceOBJ obj){
+	private int collide(SpaceOBJ obj){
 		for(int i=0;i<objects.size();i++){
 			if(obj.getID()!=i){
-				if(obj.collision(objects.get(i))){System.out.println("collide");return objects.get(i);}
+				if(obj.collision(objects.get(i))){System.out.println("collide");return obj.getID();}
 			}
 		}
-		return null;
+		return -1;
 	}
 
 	private double getDistance(SpaceOBJ self, SpaceOBJ target){
@@ -198,8 +198,8 @@ public class Space extends JPanel implements Runnable{
 			}
 			for(SpaceOBJ obj :objects){
 				obj.move();obj.control();
-				if(collide(obj)!=null){
-					toRemove.add(obj);toRemove.add(collide(obj));
+				if(collide(obj)!=-1){
+					toRemove.add(obj);toRemove.add(objects.get(collide(obj)));
 				}
 				for(int i=0;i<bullets.size();i++){
 					shot(obj,bullets.get(i));
