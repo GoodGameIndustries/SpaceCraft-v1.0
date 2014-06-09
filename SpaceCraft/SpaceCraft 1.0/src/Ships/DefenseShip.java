@@ -11,11 +11,13 @@ public class DefenseShip extends Ship{
 	public DefenseShip(Space s,int x,int y,Color t){
 		super(s,x,y,t);
 		name = "DefenseShip";
+		health=200;
 	}
 	
 	public DefenseShip(Space s,int x,int y,int xLim,int yLim,Color t){
 		super(s,x,y,xLim,yLim,t);
 		name = "DefenseShip";
+		health=200;
 	}
 	
 	public String getInfo(){

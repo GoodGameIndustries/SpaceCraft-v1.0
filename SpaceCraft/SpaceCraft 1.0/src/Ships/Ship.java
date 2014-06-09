@@ -19,7 +19,7 @@ public class Ship extends SpaceOBJ{
 
 	protected SpaceOBJ target;
 	protected int speed = 1;
-	protected int health = 1;
+	//protected int health = 1;
 	protected String name = "Ship";
 	
 	public Ship(Space s,int x, int y, Color team){
@@ -29,6 +29,7 @@ public class Ship extends SpaceOBJ{
 		yLim = 10;
 		this.team=team;
 		this.setBounds(x,y,xLim,yLim);
+		health=1;
 	}
 	public Ship(Space s,int x, int y,int length, int width,Color team){
 		this.x =x;
@@ -38,6 +39,7 @@ public class Ship extends SpaceOBJ{
 		yLim = width;
 		this.team=team;
 		this.setBounds(x,y,length,width);
+		health=1;
 	}
 	
 	public void setTarget(SpaceOBJ t){
@@ -57,7 +59,7 @@ public class Ship extends SpaceOBJ{
 		}
 	}
 	
-	private double calculateDistance(SpaceOBJ target){
+	protected double calculateDistance(SpaceOBJ target){
 		return Math.pow(Math.pow(target.getX()-x,2)+Math.pow(target.getY()-y,2),0.5);
 	}
 	
@@ -67,7 +69,7 @@ public class Ship extends SpaceOBJ{
 			x=(int) (x+(int)(t.getX()-x)*speed*10/r);
 			y=(int) (y+(int)(t.getY()-y)*speed*10/r);
 		}
-		System.out.println("<"+x+","+y+">");
+		//System.out.println("<"+x+","+y+">");
 	}
 	
 	public SpaceOBJ getTarget(){return target;}

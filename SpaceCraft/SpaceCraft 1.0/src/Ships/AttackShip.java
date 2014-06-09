@@ -29,6 +29,7 @@ public class AttackShip extends Ship{
 			ammoBank.add(new Bullet(s,x,y));
 		}
 		if(ammoBank.size()>0){System.out.println("ammo left");}
+		health=100;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -38,6 +39,7 @@ public class AttackShip extends Ship{
 		for(int i=0;i<500;i++){
 			ammoBank.add(new Bullet(s,x,y));
 		}
+		health=100;
 		// TODO Auto-generated constructor stub
 	}
 

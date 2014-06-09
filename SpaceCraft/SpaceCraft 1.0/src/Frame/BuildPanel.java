@@ -3,6 +3,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -45,13 +46,25 @@ public class BuildPanel extends JPanel implements ActionListener{
 		this.dim = d;
 		this.player = player;
 		this.setLayout(new GridLayout(0,5));
-		
+		this.addKeyListener(space.g);
 		
 		genButtons();
 		setup();
 	}
 
 	private void setup() {
+		this.add(new JLabel("Resources: "));
+		this.add(new JLabel(""+ space.getResources()));
+		this.add(new JLabel());
+		this.add(new JLabel());
+		this.add(new JLabel());
+		this.add(new JLabel("Cost: "));
+		this.add(new JLabel("100"));
+		this.add(new JLabel("300"));
+		this.add(new JLabel("500"));
+		this.add(new JLabel("750"));
+		
+		
 		this.add(new JLabel("Attack Ships"));
 		for(int i = 0; i < attackButtons.length; i++){
 			this.add(attackButtons[i]);
@@ -79,14 +92,17 @@ public class BuildPanel extends JPanel implements ActionListener{
 		for(int i = 0; i < attackButtons.length; i++){
 			attackButtons[i] = new JButton(attackNames[i]);
 			attackButtons[i].addActionListener(this);
+			attackButtons[i].addKeyListener(space.g);
 		}
 		for(int i = 0; i < defenseButtons.length; i++){
 			defenseButtons[i] = new JButton(defenseNames[i]);
 			defenseButtons[i].addActionListener(this);
+			defenseButtons[i].addKeyListener(space.g);
 		}
 		for(int i = 0; i < gatherButtons.length; i++){
 			gatherButtons[i] = new JButton(gatherNames[i]);
 			gatherButtons[i].addActionListener(this);
+			gatherButtons[i].addKeyListener(space.g);
 		}
 		
 	}

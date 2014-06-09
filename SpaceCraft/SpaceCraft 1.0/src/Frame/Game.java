@@ -44,7 +44,16 @@ public class Game extends JFrame implements MouseMotionListener,MouseListener,Ke
 		this.addMouseMotionListener(this);
 		this.addMouseListener(this);
 		
+		
 		this.setFocusable(true);
+		
+		
+		space.addKeyListener(this);
+		space.setFocusable(true);
+		
+		space.ui.addKeyListener(this);
+		space.ui.setFocusable(true);
+		
 		
 		this.setSize(dim);//sets frame size
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);//sets the frame to the center of the screen
@@ -255,8 +264,12 @@ public class Game extends JFrame implements MouseMotionListener,MouseListener,Ke
 			
 		}
 		else if((space.atSpot(e.getX()-space.getX(),e.getY()-space.getY()) != null) && (space.atSpot(e.getX()-space.getX(),e.getY()-space.getY()) instanceof Ship)){
-			space.selected.add((Ship) space.atSpot(e.getX()-space.getX(),e.getY()-space.getY()));
-			System.out.println("Ship selected");
+			if((space.atSpot(e.getX()-space.getX(),e.getY()-space.getY())).team().equals(space.getTeam())){
+				space.selected.add((Ship) space.atSpot(e.getX()-space.getX(),e.getY()-space.getY()));
+			}
+			
+			
+			//System.out.println("Ship selected");
 		}
 		
 		else{

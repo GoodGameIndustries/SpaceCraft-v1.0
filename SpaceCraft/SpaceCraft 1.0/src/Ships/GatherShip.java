@@ -25,6 +25,7 @@ public class GatherShip extends Ship{
 	public GatherShip(Space s,int x, int y, MotherShip homeShip,Color b) {
 		super(s,x, y,20,20,b);
 		this.homeShip = homeShip;
+		health=50;
 	}
 
 	public Resource getResourceSelected() {
@@ -43,7 +44,9 @@ public class GatherShip extends Ship{
 		}
 		else if(Math.abs(x-homeShip.getX()) < 100 && Math.abs(y-homeShip.getY()) < 100  && resourcesCarrying > 0){
 			homeShip.setTotalRescources(homeShip.getTotalRescources()+resourcesCarrying);
+			//space.setResources(space.getResources()+25);
 			resourcesCarrying = 0;
+			System.out.println(space.getResources());
 		}
 		else if(resourcesCarrying == 0 && resourceSelected!=null){
 			target = resourceSelected;
@@ -57,4 +60,6 @@ public class GatherShip extends Ship{
 		
 	}
 
+	public String getInfo(){return "Name: " + name +" Resources: " + resourcesCarrying +" Health: "+health+" Speed: "+speed+" X: "+x+" Y: "+y;}
+	
 }

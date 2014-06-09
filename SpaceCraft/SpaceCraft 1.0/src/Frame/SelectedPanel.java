@@ -27,8 +27,11 @@ public class SelectedPanel extends JPanel{
 	public SelectedPanel(Space space, Game g,Dimension dim){
 	this.space = space;
 	
+	this.addKeyListener(space.g);
+	
 	selectedStuff= new JTextArea(dim.width/2, 99);
 	selectedStuff.setEditable(false);
+	selectedStuff.addKeyListener(space.g);
 	this.add(selectedStuff);
 	
 	//updatePanel();

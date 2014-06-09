@@ -28,9 +28,19 @@ public class Bullet extends Ship{
 	}
 	
 	public boolean stopped(){
-		return Math.abs(getDistance(target))<10;
+		return Math.abs(getDistance(target))<1;
 	}
 	
+	protected void calculateMove(SpaceOBJ t) {
+		double r=calculateDistance(t);
+		if(r>1){
+			x=(int) (x+(int)((t.getX()+(t.getXLim()/2))-x)*speed*10/r);
+			y=(int) (y+(int)((t.getY()+(t.getYLim()/2))-y)*speed*10/r);
+		}
+		System.out.println("<"+x+","+y+">");
+	}
+	
+	public void setStopped(){stopped=true;}
 	
 	
 }

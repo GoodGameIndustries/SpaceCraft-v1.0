@@ -34,6 +34,7 @@ public class SpaceOBJ extends JLabel implements KeyListener{
 	protected Space space;
 	protected int recharge=1;
 	protected boolean alive=true;
+	protected int health=0;
 	
 	
 	public SpaceOBJ(Space space){
@@ -191,6 +192,10 @@ public class SpaceOBJ extends JLabel implements KeyListener{
 	public void destoryed(){alive=false;}
 	
 	public boolean alive(){return alive;}
+	
+	public void subtractHealth(){health--;}
+	
+	public int getHealth(){return health;}
 	
 	protected void paintOutline(Graphics g){
 		Graphics2D g2 = (Graphics2D) g;

@@ -20,6 +20,7 @@ public class BasicGather extends GatherShip{
 		xLim = 20;
 		yLim = 20;
 		speed = 2;
+		name = "Basic Gather Ship";
 	}
 	
 	public void paintComponent(Graphics g){

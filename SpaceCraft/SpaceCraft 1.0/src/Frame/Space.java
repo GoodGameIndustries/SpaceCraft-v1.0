@@ -44,11 +44,11 @@ public class Space extends JPanel implements Runnable{
 	public ArrayList<Bullet> bullets=new ArrayList<Bullet>();
 	private static int[][] vec; 
 	private int x,y,xLim=5000,yLim=5000;
-	private Game g;
-	private int Resources=100;
+	public Game g;
+	private int resources=0;
 	public ShipsPanel ui;
 	private Dimension dim;
-	private MotherShip player;
+	public MotherShip player;
 	private Color team = Color.blue;
 	private AI ai;
 	
@@ -117,7 +117,12 @@ public class Space extends JPanel implements Runnable{
 		return -1;
 	}
 	
-	
+	private void shot(SpaceOBJ obj, Bullet bullet){
+		if(obj.collision(bullet)){
+			bullet.setStopped();
+			obj.subtractHealth();
+		}
+	}
 	
 	
 	private void genBases() {
@@ -176,6 +181,10 @@ public class Space extends JPanel implements Runnable{
 
 	@Override
 	public void run() {
+		//player.setTotalRescources(resources);
+		resources = player.getTotalRescources();
+		ui.build.repaint();
+		
 		setY(-2500+dim.height/2);
 		ui.setBounds(-x,-y+dim.height-100,ui.getWidth(),ui.getHeight());
 		
@@ -189,9 +198,10 @@ public class Space extends JPanel implements Runnable{
 			}
 			for(SpaceOBJ obj :objects){
 				obj.move();obj.control();
-				/*if(collide(obj)!=-1){
+				if(collide(obj)!=-1){
 					toRemove.add(obj);toRemove.add(objects.get(collide(obj)));
-				}*/
+				}
+				if(obj.getHealth()<=0){toRemove.add(obj);}
 				if(obj.getAttack()){
 					if(obj.getTarget()!=null && !(obj.getTarget().team().equals(obj.team()))){
 						if(obj.ammoCount()!=0 && obj.fireAgain()){
@@ -288,9 +298,9 @@ public class Space extends JPanel implements Runnable{
 		return allObjects;
 	}
 	
-	public int getResources(){return Resources;}
+	public int getResources(){return resources;}
 	
-	public void setResources(int resources){Resources=resources;}
+	public void setResources(int resources){this.resources=resources;}
 
 	public Color getTeam() {
 		// TODO Auto-generated method stub
