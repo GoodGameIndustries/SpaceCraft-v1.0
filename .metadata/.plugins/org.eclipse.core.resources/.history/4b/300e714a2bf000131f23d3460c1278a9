@@ -54,9 +54,7 @@ public class Resource extends SpaceOBJ{
 		g2.setColor(Color.cyan);
 		g2.fillRect(0,0,xLim,yLim);
 	}
-	
-	
-	public boolean collision(SpaceOBJ obj){return false;}
+
 	
 	
 }
