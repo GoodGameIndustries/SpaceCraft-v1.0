@@ -45,7 +45,7 @@ public class Space extends JPanel implements Runnable{
 	private static int[][] vec; 
 	private int x,y,xLim=5000,yLim=5000;
 	public Game g;
-	private int resources=0;
+	
 	public ShipsPanel ui;
 	private Dimension dim;
 	public MotherShip player;
@@ -182,7 +182,7 @@ public class Space extends JPanel implements Runnable{
 	@Override
 	public void run() {
 		//player.setTotalRescources(resources);
-		resources = player.getTotalRescources();
+		
 		ui.build.repaint();
 		
 		setY(-2500+dim.height/2);
@@ -237,39 +237,98 @@ public class Space extends JPanel implements Runnable{
 			
 			int ID=ui.getSelectedShip();
 				if(ID==0){
+					if(player.getTotalResources()>=100){
 					Scout scout=new Scout(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
+
 					this.add(scout);objects.add(scout);scout.setID(objects.size()-1);allObjects.add(scout);ui.reset();
+
+					this.add(scout);objects.add(scout);scout.setID(objects.size()-1);ui.reset();
+					player.setTotalResources(player.getTotalResources()-100);
+					}
+
 				}
 				else if(ID==1){
+					if(player.getTotalResources()>=300){
 					Destroyer destroyer=new Destroyer(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
+
 					objects.add(destroyer);this.add(destroyer);destroyer.setID(objects.size()-1);allObjects.add(destroyer);ui.reset();
 				}
+					player.setTotalResources(player.getTotalResources()-300);
+					
+				}
+
 				else if(ID==2){
+					if(player.getTotalResources()>=500){
 					Sniper sniper=new Sniper(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
+
 					objects.add(sniper);this.add(sniper);sniper.setID(objects.size()-1);allObjects.add(sniper);ui.reset();
 				}
+
+					
+					player.setTotalResources(player.getTotalResources()-500);
+					
+				}
+
 				else if(ID==3){
+					if(player.getTotalResources()>=750){
 					Tank tank=new Tank(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
+
 					objects.add(tank);this.add(tank);tank.setID(objects.size()-1);allObjects.add(tank);ui.reset();
 				}
+
+					
+					player.setTotalResources(player.getTotalResources()-750);
+					
+				}
+
 				else if(ID==4){
+					if(player.getTotalResources()>=100){
 					BubbleShip bubble=new BubbleShip(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
+
 					objects.add(bubble);this.add(bubble);bubble.setID(objects.size()-1);allObjects.add(bubble);ui.reset();
 				}
+
+					
+					player.setTotalResources(player.getTotalResources()-100);
+					}
+					
+
 				else if(ID==5){
+					if(player.getTotalResources()>=300){
 					BrickShip brick=new BrickShip(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
+
 					objects.add(brick);this.add(brick);brick.setID(objects.size()-1);allObjects.add(brick);ui.reset();
 				}
+
+					
+					player.setTotalResources(player.getTotalResources()-300);
+					}
+					
+
 				else if(ID==6){
+					if(player.getTotalResources()>=100){
 					BasicGather bg=new BasicGather(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,player,Color.blue);
+
 					objects.add(bg);this.add(bg);bg.setID(objects.size()-1);allObjects.add(bg);ui.reset();
 				}
+
+					
+					player.setTotalResources(player.getTotalResources()-100);
+					}
+					
+
 				else if(ID==7){
+					if(player.getTotalResources()>=300){
 					AdvancedGather bg=new AdvancedGather(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,player,Color.blue);
 					objects.add(bg);this.add(bg);bg.setID(objects.size()-1);allObjects.add(bg);ui.reset();
+
+					
+					player.setTotalResources(player.getTotalResources()-300);
+					}
+
 				}
 			
-			
+			ui.build.resourceCount.setText(""+player.getTotalResources());
 			repaint();
 			ui.update();
 			try {
@@ -298,9 +357,7 @@ public class Space extends JPanel implements Runnable{
 		return allObjects;
 	}
 	
-	public int getResources(){return resources;}
 	
-	public void setResources(int resources){this.resources=resources;}
 
 	public Color getTeam() {
 		// TODO Auto-generated method stub

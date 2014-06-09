@@ -43,10 +43,11 @@ public class GatherShip extends Ship{
 			resourcesCarrying = resourceSelected.gather();
 		}
 		else if(Math.abs(x-homeShip.getX()) < 100 && Math.abs(y-homeShip.getY()) < 100  && resourcesCarrying > 0){
-			homeShip.setTotalRescources(homeShip.getTotalRescources()+resourcesCarrying);
-			//space.setResources(space.getResources()+25);
+			homeShip.setTotalResources(homeShip.getTotalResources()+resourcesCarrying);
+			//space.player.setTotalResources(space.player.getTotalResources()+resourcesCarrying);
 			resourcesCarrying = 0;
-			System.out.println(space.getResources());
+			System.out.println(space.player.getTotalResources());
+			space.ui.build.resourceCount.setText(""+space.player.getTotalResources());
 		}
 		else if(resourcesCarrying == 0 && resourceSelected!=null){
 			target = resourceSelected;

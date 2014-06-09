@@ -14,7 +14,7 @@ import java.awt.Graphics2D;
  */
 public class Resource extends SpaceOBJ{
 
-	private int resources;
+	
 	private int xLim;
 	private int yLim;
 	private int mass=0;
@@ -25,20 +25,19 @@ public class Resource extends SpaceOBJ{
 		this.xLim = xLim;
 		this.yLim = yLim;
 		
-		resources = (xLim*yLim)*25;
+		
 		
 		this.setBounds(x-xLim/2,y-yLim/2,xLim,yLim);
 	}
 	
 	public int gather(){
-		if(resources >= 25){
-			resources-=25;
+		if(xLim > 0 && yLim>0){
 			xLim--;
 			yLim--;
 			return 25;
 		}
 		else{
-			return resources;
+			return 0;
 		}
 		
 		
@@ -56,9 +55,6 @@ public class Resource extends SpaceOBJ{
 		g2.fillRect(0,0,xLim,yLim);
 	}
 
-	public int getResources() {
-		// TODO Auto-generated method stub
-		return resources;
-	}
+	
 	
 }
