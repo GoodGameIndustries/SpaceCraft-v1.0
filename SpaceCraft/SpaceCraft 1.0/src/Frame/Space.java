@@ -356,6 +356,13 @@ public class Space extends JPanel implements Runnable{
 			if(x>obj.getX() && x<obj.getX()+obj.getXLim() && y>obj.getY() && y<obj.getY()+obj.getYLim()){
 				temp = obj;
 			}
+		if(temp==null){
+			for(SpaceOBJ obj2 : resources){
+				if(x>obj2.getX() && x<obj2.getX()+obj2.getXLim() && y>obj2.getY() && y<obj2.getY()+obj2.getYLim()){
+					temp = obj2;
+				}
+			}
+		}
 		}
 		
 		return temp;
