@@ -106,7 +106,7 @@ public class Space extends JPanel implements Runnable{
 
 	private SpaceOBJ collide(SpaceOBJ obj){
 		for(int i=0;i<objects.size();i++){
-			if(obj.getID()!=i){
+			if(obj!=objects.get(i)){
 				if(obj.collision(objects.get(i))){System.out.println("collide");return objects.get(i);}
 			}
 		}

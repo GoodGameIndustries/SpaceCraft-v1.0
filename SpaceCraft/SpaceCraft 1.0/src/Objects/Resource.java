@@ -59,4 +59,5 @@ public class Resource extends SpaceOBJ{
 	public boolean collision(SpaceOBJ obj){return false;}
 	
 	
+	
 }
