@@ -104,17 +104,17 @@ public class Space extends JPanel implements Runnable{
 		}
 	}
 
-	private double getDistance(SpaceOBJ self, SpaceOBJ target){
-		return Math.pow(Math.pow(Math.abs(self.getX()-target.getX()),2)+Math.pow(Math.abs(self.getY()-target.getY()), 2),1.5);
-	}
-	
 	private int collide(SpaceOBJ obj){
 		for(int i=0;i<objects.size();i++){
 			if(obj.getID()!=i){
-				if(obj.collision(objects.get(i))){System.out.println("collide");return i;}
+				if(obj.collision(objects.get(i))){System.out.println("collide");return obj.getID();}
 			}
 		}
 		return -1;
+	}
+
+	private double getDistance(SpaceOBJ self, SpaceOBJ target){
+		return Math.pow(Math.pow(Math.abs(self.getX()-target.getX()),2)+Math.pow(Math.abs(self.getY()-target.getY()), 2),1.5);
 	}
 	
 	private void shot(SpaceOBJ obj, Bullet bullet){
