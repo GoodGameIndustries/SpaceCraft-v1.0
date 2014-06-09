@@ -104,17 +104,17 @@ public class Space extends JPanel implements Runnable{
 		}
 	}
 
+	private double getDistance(SpaceOBJ self, SpaceOBJ target){
+		return Math.pow(Math.pow(Math.abs(self.getX()-target.getX()),2)+Math.pow(Math.abs(self.getY()-target.getY()), 2),1.5);
+	}
+	
 	private int collide(SpaceOBJ obj){
 		for(int i=0;i<objects.size();i++){
 			if(obj.getID()!=i){
-				if(obj.collision(objects.get(i))){System.out.println("collide");return obj.getID();}
+				if(obj.collision(objects.get(i))){System.out.println("collide");return i;}
 			}
 		}
 		return -1;
-	}
-
-	private double getDistance(SpaceOBJ self, SpaceOBJ target){
-		return Math.pow(Math.pow(Math.abs(self.getX()-target.getX()),2)+Math.pow(Math.abs(self.getY()-target.getY()), 2),1.5);
 	}
 	
 	private void shot(SpaceOBJ obj, Bullet bullet){
@@ -198,11 +198,8 @@ public class Space extends JPanel implements Runnable{
 			}
 			for(SpaceOBJ obj :objects){
 				obj.move();obj.control();
-				/*if(collide(obj)!=-1){
+				if(collide(obj)!=-1){
 					toRemove.add(obj);toRemove.add(objects.get(collide(obj)));
-				}*/
-				for(int i=0;i<bullets.size();i++){
-					shot(obj,bullets.get(i));
 				}
 				if(obj.getHealth()<=0){toRemove.add(obj);}
 				if(obj.getAttack()){
