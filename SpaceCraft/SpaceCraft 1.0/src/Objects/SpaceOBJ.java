@@ -125,16 +125,16 @@ public class SpaceOBJ extends JLabel implements KeyListener{
 	public int getID(){return id;}
 	
 	public boolean collision(SpaceOBJ obj){
-		int xL=(x<obj.getX())?obj.getX():x;
-		int xR=(x+xLim<obj.getXLim()+obj.getX())?x+xLim:obj.getX()+obj.getXLim();
-		int yT=(y<obj.getY())?obj.getY():y;
-		int yB=(y+yLim<obj.getY()+obj.getYLim())?y+yLim:obj.getY()+obj.getYLim();
-		if(xL>=xR){
-			return false;
+		int txLim = obj.getXLim();
+		int tyLim = obj.getYLim();
+		int tX = obj.getX();
+		int tY = obj.getY();
+		
+		if(((x>tX && x<(txLim+tX)) && (y<tY && y <(tyLim+tY))) || (((x+xLim)>tX && (x+xLim)<(txLim+tX)) && ((y+yLim)>tY &&(y+yLim)<(tY+tyLim)) )){
+			return true;
 		}
 		else{
-			if(yT>=yB){return false;}
-			else{return true;}
+			return false;
 		}
 	}
 	
