@@ -124,7 +124,7 @@ public class Space extends JPanel implements Runnable{
 		return null;
 	}
 
-	public double getDistance(SpaceOBJ self, SpaceOBJ target){
+	private double getDistance(SpaceOBJ self, SpaceOBJ target){
 		return Math.pow(Math.pow(Math.abs(self.getX()-target.getX()),2)+Math.pow(Math.abs(self.getY()-target.getY()), 2),1.5);
 	}
 	
@@ -211,7 +211,7 @@ public class Space extends JPanel implements Runnable{
 			}
 			for(SpaceOBJ obj :objects){
 				obj.move();obj.control();
-				if(collide(obj)!=null && (obj.team()!=collide(obj).team())){
+				if(collide(obj)!=null){
 					toRemove.add(obj);toRemove.add(collide(obj));
 					
 				}
@@ -223,7 +223,7 @@ public class Space extends JPanel implements Runnable{
 					if(obj.getTarget()!=null && !(obj.getTarget().team().equals(obj.team()))){
 						if(obj.ammoCount()!=0 && obj.fireAgain()){
 							Bullet bullet=obj.getAmmoBank().get(0);
-							bullet.setTarget(new Beacon(obj.getTarget().getX(),obj.getTarget().getY(),team));bullet.setX(obj.getX()+obj.getXLim()+20);bullet.setY(obj.getY()+obj.getYLim()+20);
+							bullet.setTarget(new Beacon(obj.getTarget().getX(),obj.getTarget().getY(),team));bullet.setX(obj.getX()+20);bullet.setY(obj.getY()+20);
 							this.add(bullet);bullets.add(bullet);allObjects.add(bullet);
 							obj.ammoUsed();
 						}
@@ -244,6 +244,12 @@ public class Space extends JPanel implements Runnable{
 			
 			
 			for(int i=0;i<toRemove.size();i++){
+				
+				if(toRemove.get(i) instanceof Ship){
+					this.remove(((Ship) toRemove.get(i)).getHP());
+					healthBars.remove(((Ship) toRemove.get(i)).getHP());
+					}
+				
 				objects.remove(toRemove.get(i));
 				this.remove(toRemove.get(i));
 			}
