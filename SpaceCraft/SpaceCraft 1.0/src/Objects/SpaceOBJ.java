@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.geom.Area;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
@@ -125,17 +126,17 @@ public class SpaceOBJ extends JLabel implements KeyListener{
 	public int getID(){return id;}
 	
 	public boolean collision(SpaceOBJ obj){
-		int txLim = obj.getXLim();
-		int tyLim = obj.getYLim();
-		int tX = obj.getX();
-		int tY = obj.getY();
-		
-		if(((x>tX && x<(txLim+tX)) && (y<tY && y <(tyLim+tY))) || (((x+xLim)>tX && (x+xLim)<(txLim+tX)) && ((y+yLim)>tY &&(y+yLim)<(tY+tyLim)) )){
-			return true;
-		}
-		else{
+		int xL=(x<obj.getX())?obj.getX():x;
+		int xR=(x+xLim<obj.getXLim()+obj.getX())?x+xLim:obj.getX()+obj.getXLim();
+		int yT=(y<obj.getY())?obj.getY():y;
+		int yB=(y+yLim<obj.getY()+obj.getYLim())?y+yLim:obj.getY()+obj.getYLim();
+		if(xL>=xR){
 			return false;
-		}
+		 		}
+		else{
+			if(yT>=yB){return false;}
+			else{return true;}
+		 	}
 	}
 	
 	public void checkBoundary(){
@@ -193,7 +194,7 @@ public class SpaceOBJ extends JLabel implements KeyListener{
 	
 	public boolean alive(){return alive;}
 	
-	public void subtractHealth(){health--;}
+	public void subtractHealth(){health=health-1000;}
 	
 	public int getHealth(){return health;}
 	

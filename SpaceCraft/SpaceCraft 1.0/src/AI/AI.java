@@ -21,7 +21,7 @@ public class AI {
 	public MotherShip getMotherShip(){return mothership;}
 	
 	public void update(Space space){
-		newShip.add(new Scout(space,mothership.getX(),mothership.getY()+200,Color.red));
+		//newShip.add(new Scout(space,mothership.getX(),mothership.getY()+200,Color.red));
 	}
 	
 	public ArrayList<Ship> getFleet(){

@@ -124,6 +124,7 @@ public class Space extends JPanel implements Runnable{
 	
 	private void shot(SpaceOBJ obj, Bullet bullet){
 		if(obj.collision(bullet)){
+			System.out.println("shot");
 			bullet.setStopped();
 			obj.subtractHealth();
 		}
@@ -132,7 +133,7 @@ public class Space extends JPanel implements Runnable{
 	
 	private void genBases() {
 		//objects.add(new MotherShip(4500,2500,this,Color.red));
-		objects.add(ai.getMotherShip());
+		//objects.add(ai.getMotherShip());
 		player=new MotherShip(500,2500,this,Color.blue);
 		objects.add(player);
 		ui=new ShipsPanel(this,g,player);
@@ -149,6 +150,7 @@ public class Space extends JPanel implements Runnable{
 	
 	private void genAI(){
 		ai=new AI(4500,2500,this);
+		objects.add(ai.getMotherShip());
 	}
 	
 	
