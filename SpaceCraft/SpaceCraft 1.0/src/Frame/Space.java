@@ -124,7 +124,7 @@ public class Space extends JPanel implements Runnable{
 		return null;
 	}
 
-	private double getDistance(SpaceOBJ self, SpaceOBJ target){
+	public double getDistance(SpaceOBJ self, SpaceOBJ target){
 		return Math.pow(Math.pow(Math.abs(self.getX()-target.getX()),2)+Math.pow(Math.abs(self.getY()-target.getY()), 2),1.5);
 	}
 	
@@ -211,7 +211,7 @@ public class Space extends JPanel implements Runnable{
 			}
 			for(SpaceOBJ obj :objects){
 				obj.move();obj.control();
-				if(collide(obj)!=null){
+				if(collide(obj)!=null && (obj.team()!=collide(obj).team())){
 					toRemove.add(obj);toRemove.add(collide(obj));
 					
 				}

@@ -2,10 +2,9 @@ package Ships;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 import Frame.Space;
+import Objects.Resource;
 
 /**
  * 
@@ -71,4 +70,16 @@ public class MotherShip extends Ship{
 		this.totalRescources = totalRescources;
 	}
 	
+	public Resource getClosestResource(){
+		Resource result = null;
+		for(Resource r : space.resources){
+			if(result == null){result = r;}
+			else if(space.getDistance(this,r) < space.getDistance(this,result)){
+				result = r;
+			}
+		}
+		
+		return result;
+		
+	}
 }

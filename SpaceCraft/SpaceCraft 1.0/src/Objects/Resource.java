@@ -41,6 +41,7 @@ public class Resource extends SpaceOBJ{
 		}
 		
 		
+		
 	}
 	
 	public int getMass(){return mass;}

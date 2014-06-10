@@ -26,6 +26,7 @@ public class GatherShip extends Ship{
 		super(s,x, y,20,20,b);
 		this.homeShip = homeShip;
 		health=50;
+		resourceSelected = homeShip.getClosestResource();
 	}
 
 	public Resource getResourceSelected() {
@@ -38,9 +39,14 @@ public class GatherShip extends Ship{
 	
 	public void move(){
 		super.move();
+		resourceSelected = homeShip.getClosestResource();
 		
 		if(resourceSelected!=null&& Math.abs(x-resourceSelected.getX()) < 100 && Math.abs(y-resourceSelected.getY()) < 100 && resourcesCarrying == 0){
 			resourcesCarrying = resourceSelected.gather();
+			if(resourcesCarrying == 0){
+				space.resources.remove(resourceSelected);
+				resourceSelected = homeShip.getClosestResource();
+			}
 		}
 		else if(Math.abs(x-homeShip.getX()) < 100 && Math.abs(y-homeShip.getY()) < 100  && resourcesCarrying > 0){
 			homeShip.setTotalResources(homeShip.getTotalResources()+resourcesCarrying);
