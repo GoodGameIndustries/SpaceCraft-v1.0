@@ -31,11 +31,11 @@ public class Bullet extends Ship{
 		}
 		else if(type==2){
 			g2.setColor(Color.blue);
-			g2.fillOval(0,0,15,3);
+			g2.fillOval(0,0,10,3);
 		}
 		else if(type==3){
 			g2.setColor(Color.red);
-			g2.fillOval(0,0,20,20);
+			g2.fillOval(0,0,10,10);
 		}
 	}
 	
