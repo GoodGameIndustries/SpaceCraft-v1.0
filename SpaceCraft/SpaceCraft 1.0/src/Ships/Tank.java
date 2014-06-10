@@ -22,6 +22,7 @@ public class Tank extends AttackShip{
 		speed = 1;
 		health = 500;
 		name = "Tank";
+		attackType=3;
 	}
 	
 	public void paintComponent(Graphics g){

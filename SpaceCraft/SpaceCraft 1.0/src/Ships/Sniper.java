@@ -22,6 +22,7 @@ public class Sniper extends AttackShip{
 		speed = 4;
 		health = 175;
 		name = "Sniper";
+		attackType=2;
 	}
 	
 	public void paintComponent(Graphics g){

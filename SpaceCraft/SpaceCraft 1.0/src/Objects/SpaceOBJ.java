@@ -36,6 +36,7 @@ public class SpaceOBJ extends JLabel implements KeyListener{
 	protected int recharge=1;
 	protected boolean alive=true;
 	protected int health=0;
+	protected int attackType=-1;
 	
 	
 	public SpaceOBJ(Space space){
@@ -194,9 +195,24 @@ public class SpaceOBJ extends JLabel implements KeyListener{
 	
 	public boolean alive(){return alive;}
 	
-	public void subtractHealth(){health=health-50;}
+	public void subtractHealth(Bullet bullet){
+		if(bullet.getType()==0){//scout
+			health--;
+		}
+		else if(bullet.getType()==1){//destroyer
+			health=health-5;
+		}
+		else if(bullet.getType()==2){//sniper
+			health=health-20;
+		}
+		else if(bullet.getType()==3){//tank
+			health=health-100;
+		}
+	}
 	
 	public int getHealth(){return health;}
+	
+	public int getAttackType(){return attackType;}
 	
 	protected void paintOutline(Graphics g){
 		Graphics2D g2 = (Graphics2D) g;

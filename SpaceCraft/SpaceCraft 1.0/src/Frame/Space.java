@@ -125,14 +125,14 @@ public class Space extends JPanel implements Runnable{
 	}
 
 	public double getDistance(SpaceOBJ self, SpaceOBJ target){
-		return Math.pow(Math.pow(Math.abs(self.getX()-target.getX()),2)+Math.pow(Math.abs(self.getY()-target.getY()), 2),1.5);
+		return Math.pow(Math.pow(Math.abs(self.getX()-target.getX()),2)+Math.pow(Math.abs(self.getY()-target.getY()), 2),0.5);
 	}
 	
 	private void shot(SpaceOBJ obj, Bullet bullet){
 		if(obj.collision(bullet)){
 			System.out.println("shot");
 			bullet.setStopped();
-			obj.subtractHealth();
+			obj.subtractHealth(bullet);
 		}
 	}
 	
@@ -226,8 +226,9 @@ public class Space extends JPanel implements Runnable{
 							bullet.setTarget(new Beacon(obj.getTarget().getX(),obj.getTarget().getY(),team));
 							double r=getDistance(obj,obj.getTarget());
 							double di=Math.pow(Math.pow(obj.getXLim(),2)+Math.pow(obj.getYLim(), 2), 0.5);
-							bullet.setX((int) (obj.getX()+obj.getXLim()/2+di*(obj.getTarget().getX()+obj.getTarget().getXLim()-obj.getX()-obj.getXLim())/r));
-							bullet.setY((int) (obj.getY()+obj.getYLim()/2+di*(obj.getTarget().getY()+obj.getTarget().getYLim()-obj.getY()-obj.getYLim())/r));
+							bullet.setX((int) (obj.getX()+obj.getXLim()/2+50*(obj.getTarget().getX()+obj.getTarget().getXLim()-obj.getX()-obj.getXLim())/r));
+							bullet.setY((int) (obj.getY()+obj.getYLim()/2+50*(obj.getTarget().getY()+obj.getTarget().getYLim()-obj.getY()-obj.getYLim())/r));
+							bullet.setType(obj.getAttackType());
 							this.add(bullet);bullets.add(bullet);allObjects.add(bullet);
 							obj.ammoUsed();
 						}

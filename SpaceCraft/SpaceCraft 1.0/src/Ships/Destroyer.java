@@ -22,6 +22,7 @@ public class Destroyer extends AttackShip{
 		speed = 3;
 		health = 250;
 		name = "Destroyer";
+		attackType=1;
 	}
 	
 	public void paintComponent(Graphics g){
