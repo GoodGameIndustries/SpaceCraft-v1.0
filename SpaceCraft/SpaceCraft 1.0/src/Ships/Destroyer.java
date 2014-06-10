@@ -17,7 +17,7 @@ public class Destroyer extends AttackShip{
 
 	
 	public Destroyer(Space s,int x, int y, Color t) {
-		super(s,x, y,50,50, t);
+		super(s,x, y,50,55, t);
 		power = 5;
 		speed = 3;
 		health = 250;
@@ -27,7 +27,8 @@ public class Destroyer extends AttackShip{
 	
 	public void paintComponent(Graphics g){
 		g.setColor(Color.orange);
-		g.fillOval(0,0,50,50);
+		g.fillOval(0,5,xLim,yLim-5);
 		paintOutline(g);
+		drawHealth(g);
 	}
 }

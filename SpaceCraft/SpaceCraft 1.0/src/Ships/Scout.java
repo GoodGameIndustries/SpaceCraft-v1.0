@@ -17,7 +17,7 @@ public class Scout extends AttackShip{
 
 	
 	public Scout(Space s,int x, int y, Color t) {
-		super(s,x, y,25,25, t);
+		super(s,x, y,25,30, t);
 		power = 1;
 		speed = 5;
 		health = 100;
@@ -27,8 +27,9 @@ public class Scout extends AttackShip{
 	
 	public void paintComponent(Graphics g){
 		g.setColor(Color.white);
-		g.fillOval(0,0,25,25);
+		g.fillOval(0,5,xLim,yLim-5);
 		paintOutline(g);
+		drawHealth(g);
 	}
 	
 

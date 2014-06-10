@@ -17,7 +17,7 @@ public class Sniper extends AttackShip{
 
 	
 	public Sniper(Space s,int x, int y, Color t) {
-		super(s,x, y,35,35, t);
+		super(s,x, y,35,40, t);
 		power = 10;
 		speed = 4;
 		health = 175;
@@ -27,7 +27,8 @@ public class Sniper extends AttackShip{
 	
 	public void paintComponent(Graphics g){
 		g.setColor(new Color(0,50,0));
-		g.fillOval(0,0,35,35);
+		g.fillOval(0,5,xLim,yLim-5);
 		paintOutline(g);
+		drawHealth(g);
 	}
 }

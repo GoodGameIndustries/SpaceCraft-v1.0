@@ -21,7 +21,7 @@ public class MotherShip extends Ship{
 	private Space space;
 	
 	public MotherShip(int x,int y,Space space,Color t){
-		super(space,x,y,50,50,t);
+		super(space,x,y,50,55,t);
 		this.team=t;
 		this.x = x;
 		this.y = y;
@@ -41,8 +41,9 @@ public class MotherShip extends Ship{
 	public void paintComponent(Graphics g){
 		Graphics g2 = (Graphics2D) g;
 		g2.setColor(team);
-		g2.fillRect(0,0,xLim,yLim);
+		g2.fillRect(0,5,xLim,yLim-5);
 		paintOutline(g);
+		drawHealth(g);
 	}
 	
 	public void control(){

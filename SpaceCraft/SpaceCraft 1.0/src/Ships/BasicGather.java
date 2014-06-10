@@ -18,7 +18,7 @@ public class BasicGather extends GatherShip{
 	public BasicGather(Space s,int x,int y,MotherShip ms,Color t){
 		super(s,x,y,ms,t);
 		xLim = 20;
-		yLim = 20;
+		yLim = 25;
 		speed = 1;
 		name = "Basic Gather Ship";
 	}
@@ -26,8 +26,9 @@ public class BasicGather extends GatherShip{
 	public void paintComponent(Graphics g){
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(Color.white);
-		g2.drawOval(0, 0, xLim, yLim);
+		g2.drawOval(0, 5, xLim, yLim-5);
 		paintOutline(g);
+		drawHealth(g);
 	}
 	
 }

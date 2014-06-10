@@ -16,7 +16,7 @@ import Frame.Space;
 public class BubbleShip extends DefenseShip{
 
 	public BubbleShip(Space s,int x, int y,Color b) {
-		super(s,x, y,75,75,b);
+		super(s,x, y,75,80,b);
 		shield = 500;
 		speed = 3;
 		health = 100;
@@ -28,8 +28,9 @@ public class BubbleShip extends DefenseShip{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.setColor(Color.blue);
-		g.fillOval(0,0,xLim,yLim);
+		g.fillOval(0,5,xLim,yLim-5);
 		paintOutline(g);
+		drawHealth(g);
 	}
 
 }
