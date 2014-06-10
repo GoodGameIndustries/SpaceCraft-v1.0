@@ -1,8 +1,10 @@
 package Ships;
  import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import Frame.HealthBar;
 import Frame.Space;
 import Objects.SpaceOBJ;
 
@@ -22,6 +24,8 @@ public class Ship extends SpaceOBJ{
 	//protected int health = 1;
 	protected String name = "Ship";
 	
+	protected HealthBar hp;
+	
 	public Ship(Space s,int x, int y, Color team){
 		this.x =x;
 		this.y =y;
@@ -30,6 +34,9 @@ public class Ship extends SpaceOBJ{
 		this.team=team;
 		this.setBounds(x,y,xLim,yLim);
 		health=1;
+		hp = new HealthBar(this);
+		s.healthBars.add(hp);
+		s.add(hp);
 	}
 	public Ship(Space s,int x, int y,int length, int width,Color team){
 		this.x =x;
@@ -40,6 +47,9 @@ public class Ship extends SpaceOBJ{
 		this.team=team;
 		this.setBounds(x,y,length,width);
 		health=1;
+		hp  = new HealthBar(this);
+		s.healthBars.add(hp);
+		s.add(hp);
 	}
 	
 	public void setTarget(SpaceOBJ t){
@@ -75,5 +85,9 @@ public class Ship extends SpaceOBJ{
 	public SpaceOBJ getTarget(){return target;}
 	
 	public String getInfo(){return "Name: " + name +" Health: "+health+" Speed: "+speed+" X: "+x+" Y: "+y;}
+	public Component getHP() {
+		// TODO Auto-generated method stub
+		return hp;
+	}
 	
 }

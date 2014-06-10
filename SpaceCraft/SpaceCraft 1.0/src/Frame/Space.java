@@ -42,6 +42,7 @@ public class Space extends JPanel implements Runnable{
 	public ArrayList<Ship> AIObjects=new ArrayList<Ship>();
 	private ArrayList<SpaceOBJ> toRemove=new ArrayList<SpaceOBJ>();
 	public ArrayList<Resource> resources=new ArrayList<Resource>();
+	public ArrayList<HealthBar> healthBars = new ArrayList<HealthBar>();
 	private ArrayList<Bullet> stoppedBullets=new ArrayList<Bullet>();
 	public ArrayList<Bullet> bullets=new ArrayList<Bullet>();
 	private static int[][] vec; 
@@ -107,6 +108,11 @@ public class Space extends JPanel implements Runnable{
 		for(int i=0;i<resources.size();i++){
 			this.add(resources.get(i));
 		}
+		/*
+		for(int i = 0; i < healthBars.size();i++){
+			this.add(healthBars.get(i));
+		}
+		*/
 	}
 
 	private SpaceOBJ collide(SpaceOBJ obj){
@@ -205,6 +211,7 @@ public class Space extends JPanel implements Runnable{
 				obj.move();obj.control();
 				if(collide(obj)!=null){
 					toRemove.add(obj);toRemove.add(collide(obj));
+					
 				}
 				for(int i=0;i<bullets.size();i++){
 					shot(obj,bullets.get(i));
@@ -235,6 +242,12 @@ public class Space extends JPanel implements Runnable{
 			
 			
 			for(int i=0;i<toRemove.size();i++){
+				
+				if(toRemove.get(i) instanceof Ship){
+					this.remove(((Ship) toRemove.get(i)).getHP());
+					healthBars.remove(((Ship) toRemove.get(i)).getHP());
+					}
+				
 				objects.remove(toRemove.get(i));
 				this.remove(toRemove.get(i));
 			}
