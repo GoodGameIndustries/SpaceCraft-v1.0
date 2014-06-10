@@ -19,7 +19,7 @@ public class BasicGather extends GatherShip{
 		super(s,x,y,ms,t);
 		xLim = 20;
 		yLim = 20;
-		speed = 2;
+		speed = 1;
 		name = "Basic Gather Ship";
 	}
 	
