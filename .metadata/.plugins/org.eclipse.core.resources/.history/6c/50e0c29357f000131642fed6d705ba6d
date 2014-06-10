@@ -194,7 +194,7 @@ public class SpaceOBJ extends JLabel implements KeyListener{
 	
 	public boolean alive(){return alive;}
 	
-	public void subtractHealth(){health=health-50;}
+	public void subtractHealth(){health=health-1000;}
 	
 	public int getHealth(){return health;}
 	

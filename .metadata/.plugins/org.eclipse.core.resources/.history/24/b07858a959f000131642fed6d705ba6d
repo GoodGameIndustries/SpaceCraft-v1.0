@@ -51,7 +51,7 @@ public class HealthBar extends JLabel{
 		temp=temp+(maxHealth-currentHealth);
 		
 		g.setColor(Color.green);
-		g.fillRect(0,0,xLim-(int)(xLim*((double)temp/maxHealth))/10,yLim);
+		g.fillRect(0,0,xLim-(int)(xLim*((double)temp/maxHealth))/2,yLim);
 		this.setBounds(x,y,xLim,yLim);
 		
 	}

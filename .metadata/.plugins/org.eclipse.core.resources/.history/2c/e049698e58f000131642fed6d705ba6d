@@ -24,7 +24,6 @@ public class HealthBar extends JLabel{
 	private int yLim;
 	private int x;
 	private int y;
-	private int temp;
 	
 	public HealthBar(Ship s){
 		this.s = s;
@@ -33,7 +32,6 @@ public class HealthBar extends JLabel{
 		
 		x = s.getX();
 		y = s.getY()-15;
-		temp=0;
 		xLim = s.getXLim();
 		yLim = 10;
 		
@@ -45,13 +43,13 @@ public class HealthBar extends JLabel{
 		
 		currentHealth = s.getHealth();
 		if(currentHealth>maxHealth){maxHealth = currentHealth;}
-		
+		System.out.println((double)currentHealth/maxHealth);
 		x=s.getX();
 		y=s.getY()-15;
-		temp=temp+(maxHealth-currentHealth);
+		
 		
 		g.setColor(Color.green);
-		g.fillRect(0,0,xLim-(int)(xLim*((double)temp/maxHealth))/10,yLim);
+		g.fillRect(0,0,(int) (((double)(currentHealth/maxHealth))*xLim),yLim);
 		this.setBounds(x,y,xLim,yLim);
 		
 	}
