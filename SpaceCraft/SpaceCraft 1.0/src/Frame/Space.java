@@ -41,7 +41,7 @@ public class Space extends JPanel implements Runnable{
 	public ArrayList<Ship> selected = new ArrayList<Ship>();
 	public ArrayList<Ship> AIObjects=new ArrayList<Ship>();
 	private ArrayList<SpaceOBJ> toRemove=new ArrayList<SpaceOBJ>();
-	private ArrayList<Resource> resources=new ArrayList<Resource>();
+	public ArrayList<Resource> resources=new ArrayList<Resource>();
 	private ArrayList<Bullet> stoppedBullets=new ArrayList<Bullet>();
 	public ArrayList<Bullet> bullets=new ArrayList<Bullet>();
 	private static int[][] vec; 

@@ -25,7 +25,7 @@ public class Ship extends SpaceOBJ{
 	public Ship(Space s,int x, int y, Color team){
 		this.x =x;
 		this.y =y;
-		xLim =10;
+		xLim = 10;
 		yLim = 10;
 		this.team=team;
 		this.setBounds(x,y,xLim,yLim);

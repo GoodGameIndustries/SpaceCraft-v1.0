@@ -30,7 +30,7 @@ public class ShipsPanel extends JPanel{
 		scrollHold.add(scroll);*/
 		//scrollHold.setSize(dim.width/4,99);
 		build = new BuildPanel(space,dim,this,player);
-		mini = new MiniMap(space);
+		mini = new MiniMap(space,dim);
 		mini.setSize(99,99);
 		
 		//JPanel buildHold = new JPanel();

@@ -31,7 +31,7 @@ public class MotherShip extends Ship{
 		name = "MotherShip";
 		health = 1000;
 		
-		xLim=50;yLim=50;
+		xLim = 50;yLim=50;
 		if(player){
 		addKeyListener(this);
 		this.setFocusable(true);
