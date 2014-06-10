@@ -24,14 +24,14 @@ public class Scout extends AttackShip{
 		health = 100;
 		name = "Scout";
 		attackType=0;
-<<<<<<< HEAD
+
 		maxDistance = 500;
-=======
+
 		ammoBank.clear();
 		for(int i=0;i<500;i++){
 			ammoBank.add(new Bullet(s,x+xLim+20,y+yLim+20));
 		}
->>>>>>> origin/master
+
 	}
 	
 	public void paintComponent(Graphics g){

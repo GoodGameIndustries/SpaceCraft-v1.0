@@ -24,14 +24,14 @@ public class Destroyer extends AttackShip{
 		health = 250;
 		name = "Destroyer";
 		attackType=1;
-<<<<<<< HEAD
+
 		maxDistance = 1000;
-=======
+
 		ammoBank.clear();
 		for(int i=0;i<250;i++){
 			ammoBank.add(new Bullet(s,x+xLim+20,y+yLim+20));
 		}
->>>>>>> origin/master
+
 	}
 	
 	public void paintComponent(Graphics g){
