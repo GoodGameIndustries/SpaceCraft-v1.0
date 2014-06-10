@@ -29,7 +29,7 @@ public class SelectedPanel extends JPanel{
 	
 	this.addKeyListener(space.g);
 	
-	selectedStuff= new JTextArea(dim.width/2, 99);
+	selectedStuff= new JTextArea(dim.width/4, 99);
 	selectedStuff.setEditable(false);
 	selectedStuff.addKeyListener(space.g);
 	this.add(selectedStuff);

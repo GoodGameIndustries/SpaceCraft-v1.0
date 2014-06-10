@@ -41,7 +41,8 @@ public class Space extends JPanel implements Runnable{
 	public ArrayList<Ship> selected = new ArrayList<Ship>();
 	public ArrayList<Ship> AIObjects=new ArrayList<Ship>();
 	private ArrayList<SpaceOBJ> toRemove=new ArrayList<SpaceOBJ>();
-	private ArrayList<Resource> resources=new ArrayList<Resource>();
+	public ArrayList<Resource> resources=new ArrayList<Resource>();
+	public ArrayList<HealthBar> healthBars = new ArrayList<HealthBar>();
 	private ArrayList<Bullet> stoppedBullets=new ArrayList<Bullet>();
 	public ArrayList<Bullet> bullets=new ArrayList<Bullet>();
 	private static int[][] vec; 
@@ -72,7 +73,7 @@ public class Space extends JPanel implements Runnable{
 		
 		this.setBackground(Color.black);
 		this.setLayout(null);
-		this.setSize(xLim,yLim);
+		this.setSize(getxLim(),getyLim());
 		//objects.add(new Ship(500,500));
 		this.add(ui);
 		
@@ -80,7 +81,7 @@ public class Space extends JPanel implements Runnable{
 		
 		addObjs();
 		
-		this.setBounds(x,y,xLim,yLim);
+		this.setBounds(x,y,getxLim(),getyLim());
 		
 		
 	}
@@ -107,6 +108,11 @@ public class Space extends JPanel implements Runnable{
 		for(int i=0;i<resources.size();i++){
 			this.add(resources.get(i));
 		}
+		/*
+		for(int i = 0; i < healthBars.size();i++){
+			this.add(healthBars.get(i));
+		}
+		*/
 	}
 
 	private SpaceOBJ collide(SpaceOBJ obj){
@@ -166,7 +172,7 @@ public class Space extends JPanel implements Runnable{
 	 */
 	public void setY(int y) {
 		this.y = y;
-		this.setBounds(x,y,xLim,yLim);
+		this.setBounds(x,y,getxLim(),getyLim());
 		repaint();
 	}
 
@@ -182,7 +188,7 @@ public class Space extends JPanel implements Runnable{
 	 */
 	public void setX(int x) {
 		this.x = x;
-		this.setBounds(x,y,xLim,yLim);
+		this.setBounds(x,y,getxLim(),getyLim());
 		repaint();
 	}
 
@@ -207,6 +213,7 @@ public class Space extends JPanel implements Runnable{
 				obj.move();obj.control();
 				if(collide(obj)!=null){
 					toRemove.add(obj);toRemove.add(collide(obj));
+					
 				}
 				for(int i=0;i<bullets.size();i++){
 					shot(obj,bullets.get(i));
@@ -237,6 +244,12 @@ public class Space extends JPanel implements Runnable{
 			
 			
 			for(int i=0;i<toRemove.size();i++){
+				
+				if(toRemove.get(i) instanceof Ship){
+					this.remove(((Ship) toRemove.get(i)).getHP());
+					healthBars.remove(((Ship) toRemove.get(i)).getHP());
+					}
+				
 				objects.remove(toRemove.get(i));
 				this.remove(toRemove.get(i));
 			}
@@ -358,6 +371,13 @@ public class Space extends JPanel implements Runnable{
 			if(x>obj.getX() && x<obj.getX()+obj.getXLim() && y>obj.getY() && y<obj.getY()+obj.getYLim()){
 				temp = obj;
 			}
+		if(temp==null){
+			for(SpaceOBJ obj2 : resources){
+				if(x>obj2.getX() && x<obj2.getX()+obj2.getXLim() && y>obj2.getY() && y<obj2.getY()+obj2.getYLim()){
+					temp = obj2;
+				}
+			}
+		}
 		}
 		
 		return temp;
@@ -372,6 +392,22 @@ public class Space extends JPanel implements Runnable{
 	public Color getTeam() {
 		// TODO Auto-generated method stub
 		return team;
+	}
+
+	public int getxLim() {
+		return xLim;
+	}
+
+	public void setxLim(int xLim) {
+		this.xLim = xLim;
+	}
+
+	public int getyLim() {
+		return yLim;
+	}
+
+	public void setyLim(int yLim) {
+		this.yLim = yLim;
 	}
 	
 }
