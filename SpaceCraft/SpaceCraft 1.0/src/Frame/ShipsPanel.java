@@ -1,6 +1,7 @@
 package Frame;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 
 import javax.swing.JPanel;
@@ -17,6 +18,7 @@ public class ShipsPanel extends JPanel{
 	private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();//screen size dimension
 	private JScrollPane scroll;
 	private MotherShip player;
+	private MiniMap mini;
 	//private int shipSelected=-1;
 	
 	public ShipsPanel(Space space, Game g, MotherShip player){
@@ -24,17 +26,24 @@ public class ShipsPanel extends JPanel{
 		this.space = space;
 		selected = new SelectedPanel(space,g,dim);
 		scroll = new JScrollPane(selected);
-		JPanel scrollHold = new JPanel();
-		scrollHold.add(scroll);
-		scrollHold.setSize(dim.width/2,99);
+		/*JPanel scrollHold = new JPanel();
+		scrollHold.add(scroll);*/
+		//scrollHold.setSize(dim.width/4,99);
 		build = new BuildPanel(space,dim,this,player);
+		mini = new MiniMap(space);
+		mini.setSize(99,99);
+		
 		//JPanel buildHold = new JPanel();
 		//buildHold.add(build);
 		//build.setSize(dim.width/2,99);
 		
-		this.setLayout(new BorderLayout());
-		this.add(scrollHold,BorderLayout.WEST);
-		this.add(build,BorderLayout.CENTER);
+		this.setLayout(null);
+		this.add(scroll);
+		scroll.setBounds(0,0,dim.width/2,99);
+		this.add(mini);
+		mini.setBounds(dim.width/2,0,99,99);
+		this.add(build);
+		build.setBounds((dim.width/2)+99,0,dim.width-((dim.width/2)+99),99);
 		this.setSize(dim.width,99);
 		
 	}

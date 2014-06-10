@@ -72,7 +72,7 @@ public class Space extends JPanel implements Runnable{
 		
 		this.setBackground(Color.black);
 		this.setLayout(null);
-		this.setSize(xLim,yLim);
+		this.setSize(getxLim(),getyLim());
 		//objects.add(new Ship(500,500));
 		this.add(ui);
 		
@@ -80,7 +80,7 @@ public class Space extends JPanel implements Runnable{
 		
 		addObjs();
 		
-		this.setBounds(x,y,xLim,yLim);
+		this.setBounds(x,y,getxLim(),getyLim());
 		
 		
 	}
@@ -164,7 +164,7 @@ public class Space extends JPanel implements Runnable{
 	 */
 	public void setY(int y) {
 		this.y = y;
-		this.setBounds(x,y,xLim,yLim);
+		this.setBounds(x,y,getxLim(),getyLim());
 		repaint();
 	}
 
@@ -180,7 +180,7 @@ public class Space extends JPanel implements Runnable{
 	 */
 	public void setX(int x) {
 		this.x = x;
-		this.setBounds(x,y,xLim,yLim);
+		this.setBounds(x,y,getxLim(),getyLim());
 		repaint();
 	}
 
@@ -377,6 +377,22 @@ public class Space extends JPanel implements Runnable{
 	public Color getTeam() {
 		// TODO Auto-generated method stub
 		return team;
+	}
+
+	public int getxLim() {
+		return xLim;
+	}
+
+	public void setxLim(int xLim) {
+		this.xLim = xLim;
+	}
+
+	public int getyLim() {
+		return yLim;
+	}
+
+	public void setyLim(int yLim) {
+		this.yLim = yLim;
 	}
 	
 }
