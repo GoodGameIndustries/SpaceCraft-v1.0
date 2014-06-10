@@ -3,7 +3,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
 
-import javax.annotation.Resources;
 import javax.swing.JPanel;
 
 import AI.AI;
@@ -42,7 +41,6 @@ public class Space extends JPanel implements Runnable{
 	public ArrayList<Ship> AIObjects=new ArrayList<Ship>();
 	private ArrayList<SpaceOBJ> toRemove=new ArrayList<SpaceOBJ>();
 	public ArrayList<Resource> resources=new ArrayList<Resource>();
-	public ArrayList<HealthBar> healthBars = new ArrayList<HealthBar>();
 	private ArrayList<Bullet> stoppedBullets=new ArrayList<Bullet>();
 	public ArrayList<Bullet> bullets=new ArrayList<Bullet>();
 	private static int[][] vec; 

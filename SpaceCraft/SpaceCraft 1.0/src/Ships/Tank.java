@@ -17,7 +17,7 @@ public class Tank extends AttackShip{
 
 	
 	public Tank(Space s,int x, int y, Color t) {
-		super(s,x, y,100,100, t);
+		super(s,x, y,100,105, t);
 		power = 10;
 		speed = 1;
 		health = 500;
@@ -26,7 +26,8 @@ public class Tank extends AttackShip{
 	
 	public void paintComponent(Graphics g){
 		g.setColor(Color.DARK_GRAY);
-		g.fillOval(0,0,100,100);
+		g.fillOval(0,5,xLim,yLim-5);
 		paintOutline(g);
+		drawHealth(g);
 	}
 }
