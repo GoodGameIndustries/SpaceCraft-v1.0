@@ -3,7 +3,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import Frame.Space;
-import Objects.Bullet;
 
 /**
  * 
@@ -24,10 +23,6 @@ public class Sniper extends AttackShip{
 		health = 175;
 		name = "Sniper";
 		attackType=2;
-		ammoBank.clear();
-		for(int i=0;i<100;i++){
-			ammoBank.add(new Bullet(s,x+xLim+20,y+yLim+20));
-		}
 	}
 	
 	public void paintComponent(Graphics g){
