@@ -23,6 +23,7 @@ public class Scout extends AttackShip{
 		health = 100;
 		name = "Scout";
 		attackType=0;
+		maxDistance = 500;
 	}
 	
 	public void paintComponent(Graphics g){

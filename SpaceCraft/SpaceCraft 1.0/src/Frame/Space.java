@@ -202,6 +202,9 @@ public class Space extends JPanel implements Runnable{
 		
 		while(true){
 			ai.update(this);
+			if(player.getTotalResources() < 0){
+				player.setTotalResources(0);
+			}
 			for(Ship ship:ai.getNew()){
 				this.add(ship);
 				objects.add(ship);
@@ -260,7 +263,10 @@ public class Space extends JPanel implements Runnable{
 			}
 			
 			int ID=ui.getSelectedShip();
-				if(ID==0){
+				if(player.getTotalResources()<100){
+					//do nothing
+				}
+				else if(ID==0){
 					if(player.getTotalResources()>=100){
 					Scout scout=new Scout(this,player.getX()+player.getXLim()+200,player.getY()+player.getYLim()+200,Color.blue);
 

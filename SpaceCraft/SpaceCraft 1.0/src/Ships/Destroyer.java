@@ -23,6 +23,7 @@ public class Destroyer extends AttackShip{
 		health = 250;
 		name = "Destroyer";
 		attackType=1;
+		maxDistance = 1000;
 	}
 	
 	public void paintComponent(Graphics g){

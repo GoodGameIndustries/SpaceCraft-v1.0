@@ -23,6 +23,7 @@ public class Sniper extends AttackShip{
 		health = 175;
 		name = "Sniper";
 		attackType=2;
+		maxDistance = 2500;
 	}
 	
 	public void paintComponent(Graphics g){
