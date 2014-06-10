@@ -244,12 +244,6 @@ public class Space extends JPanel implements Runnable{
 			
 			
 			for(int i=0;i<toRemove.size();i++){
-				
-				if(toRemove.get(i) instanceof Ship){
-					this.remove(((Ship) toRemove.get(i)).getHP());
-					healthBars.remove(((Ship) toRemove.get(i)).getHP());
-					}
-				
 				objects.remove(toRemove.get(i));
 				this.remove(toRemove.get(i));
 			}
