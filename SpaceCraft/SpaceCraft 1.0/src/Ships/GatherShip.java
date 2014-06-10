@@ -22,8 +22,9 @@ public class GatherShip extends Ship{
 	private int lastX = 0;
 	private int lastY = 0;
 	
+	
 	public GatherShip(Space s,int x, int y, MotherShip homeShip,Color b) {
-		super(s,x, y,20,20,b);
+		super(s,x, y,20,25,b);
 		this.homeShip = homeShip;
 		health=50;
 		resourceSelected = homeShip.getClosestResource();

@@ -13,6 +13,7 @@ import Objects.Resource;
 import Objects.SpaceOBJ;
 import Objects.Sun;
 import Ships.AdvancedGather;
+import Ships.AttackShip;
 import Ships.BasicGather;
 import Ships.BrickShip;
 import Ships.BubbleShip;
@@ -218,7 +219,10 @@ public class Space extends JPanel implements Runnable{
 				}
 				if(obj.getHealth()<=0){toRemove.add(obj);}
 				if(obj.getAttack()){
-					if(obj.getTarget()!=null && !(obj.getTarget().team().equals(obj.team()))){
+					if(obj.getTarget()!=null){
+					System.out.println(getDistance(obj, obj.getTarget()));
+					}
+					if(obj.getTarget()!=null && !(obj.getTarget().team().equals(obj.team())) && getDistance(obj, obj.getTarget()) <= ((AttackShip)obj).getMaxDistance()){
 						if(obj.ammoCount()!=0 && obj.fireAgain()){
 							Bullet bullet=obj.getAmmoBank().get(0);
 							bullet.setTarget(new Beacon(obj.getTarget().getX(),obj.getTarget().getY(),team));

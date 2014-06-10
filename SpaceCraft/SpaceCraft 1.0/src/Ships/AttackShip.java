@@ -20,6 +20,7 @@ public class AttackShip extends Ship{
 	protected ArrayList<Bullet> ammoBank = new ArrayList<Bullet>();
 	protected int ammoCount=500;
 	protected boolean isAttack = false;
+	protected double maxDistance = 1000;
 	
 	
 	public AttackShip(Space s,int x, int y,Color t) {
@@ -53,7 +54,7 @@ public class AttackShip extends Ship{
 	
 	
 	public void move(){
-		if(!(target instanceof Ship)){
+		if(!(target instanceof Ship) || space.getDistance(this, target)>maxDistance){
 		super.move();
 		}
 		
@@ -71,9 +72,14 @@ public class AttackShip extends Ship{
 		
 	}
 	
-	public boolean fireAgain(){return recharge%10==0;}
+	public boolean fireAgain(){return (recharge%10==0);}
 	
 	public String getInfo(){return "Name: " + name +" Health: "+health+" Speed: "+speed+" Power: " + power + " Ammo: " + ammoCount +" X: "+x+" Y: "+y;}
+
+	public double getMaxDistance() {
+		// TODO Auto-generated method stub
+		return maxDistance;
+	}
 	
 	
 }
