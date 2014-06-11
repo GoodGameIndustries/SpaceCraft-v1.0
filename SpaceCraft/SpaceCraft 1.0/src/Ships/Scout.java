@@ -24,7 +24,7 @@ public class Scout extends AttackShip{
 		health = 100;
 		name = "Scout";
 		attackType=0;
-
+		rechargeNeeded = 10;
 		maxDistance = 500;
 
 		ammoBank.clear();

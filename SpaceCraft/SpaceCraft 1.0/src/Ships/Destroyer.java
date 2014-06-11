@@ -24,7 +24,7 @@ public class Destroyer extends AttackShip{
 		health = 250;
 		name = "Destroyer";
 		attackType=1;
-
+		rechargeNeeded = 2;
 		maxDistance = 1000;
 
 		ammoBank.clear();

@@ -24,7 +24,7 @@ public class Tank extends AttackShip{
 		health = 500;
 		name = "Tank";
 		attackType=3;
-
+		rechargeNeeded = 50;
 		maxDistance = 1500;
 
 		ammoBank.clear();

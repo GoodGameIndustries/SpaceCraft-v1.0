@@ -21,6 +21,7 @@ public class AttackShip extends Ship{
 	protected int ammoCount=500;
 	protected boolean isAttack = false;
 	protected double maxDistance = 1000;
+	protected int rechargeNeeded = 10;
 	
 	
 	public AttackShip(Space s,int x, int y,Color t) {
@@ -72,7 +73,7 @@ public class AttackShip extends Ship{
 		
 	}
 	
-	public boolean fireAgain(){return (recharge%10==0);}
+	public boolean fireAgain(){return (recharge%rechargeNeeded==0);}
 	
 	public String getInfo(){return "Name: " + name +" Health: "+health+" Speed: "+speed+" Power: " + power + " Ammo: " + ammoCount +" X: "+x+" Y: "+y;}
 

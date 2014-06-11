@@ -24,7 +24,7 @@ public class Sniper extends AttackShip{
 		health = 175;
 		name = "Sniper";
 		attackType=2;
-
+		rechargeNeeded = 15;
 		maxDistance = 2500;
 
 		ammoBank.clear();
