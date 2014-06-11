@@ -21,9 +21,9 @@ public class AI {
 	public MotherShip getMotherShip(){return mothership;}
 	
 	public void update(Space space){
-		if(mothership.getTotalResources()>100){
+		/*if(mothership.getTotalResources()>100){
 			newShip.add(new BasicGather(space,mothership.getX()+mothership.getXLim()+20,mothership.getY()+mothership.getYLim()+20,mothership,Color.red));
-		}
+		}*/
 	}
 	
 	public ArrayList<Ship> getFleet(){
