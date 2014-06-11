@@ -27,9 +27,6 @@ public class GatherShip extends Ship{
 		super(s,x, y,20,25,b);
 		this.homeShip = homeShip;
 		health=50;
-
-		resourceSelected = homeShip.getClosestResource();
-
 		resourceSelected = getClosestResource();
 		target = resourceSelected;
 
