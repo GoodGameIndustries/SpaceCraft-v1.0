@@ -87,7 +87,7 @@ public class Space extends JPanel implements Runnable{
 	
 	private void genResources() {
 		for(int i = 0; i < 100; i++){
-			resources.add(new Resource((int)(Math.random()*5000),(int)(Math.random()*5000),(int)(Math.random()*50),(int)(Math.random()*50)));
+			resources.add(new Resource((int)(Math.random()*5000),(int)(Math.random()*5000),(int)(Math.random()*100),(int)(Math.random()*100)));
 			allObjects.addAll(objects);
 		}
 		
