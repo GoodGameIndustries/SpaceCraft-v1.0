@@ -29,7 +29,7 @@ public class AI {
 	protected int enemyAttack=0;protected int enemyDefense=0;protected int enemyGather=0;
 	protected int aiAttack=0;protected int aiDefense=0;protected int aiGather=0;
 	
-	private int select = -1; //0=gather,1=attack,2=defense
+	private int select = 0; //0=gather,1=attack,2=defense
 	
 	public AI(int x, int y, Space space){
 		mothership=new MotherShip(x,y,space,Color.red);
@@ -52,7 +52,6 @@ public class AI {
 		}
 		int difAttack=enemyAttack-aiAttack;int difDefense=enemyDefense-aiDefense;int difGather=enemyGather-aiGather;
 		System.out.println("enemy attack: "+enemyAttack+" enemy defense: "+enemyDefense+" enemy gather: "+enemyGather);
-		difAttack=(difAttack>0)?difAttack:0;difGather=(difGather>0)?difGather:0;difDefense=(difDefense>0)?difDefense:0;
 		if(Math.max(Math.max(difAttack, difGather),Math.max(difDefense,difGather))==difGather){
 			select=0;
 		}
