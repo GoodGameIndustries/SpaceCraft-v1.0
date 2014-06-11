@@ -23,15 +23,25 @@ public class AI {
 	public MotherShip getMotherShip(){return mothership;}
 	
 	public void update(Space space){
+<<<<<<< HEAD
+=======
 
+		if(mothership.getTotalResources()>100){
+			newShip.add(new BasicGather(space,mothership.getX()+mothership.getXLim()+20,mothership.getY()+mothership.getYLim()+20,mothership,Color.red));
+
+		//newShip.add(new Scout(space,mothership.getX(),mothership.getY()+200,Color.red));
+>>>>>>> FETCH_HEAD
 		if(mothership.getTotalResources() > 100){
 			newShip.add(new BasicGather(space,mothership.getX(),mothership.getY()+200, mothership, Color.red));
 			
 			mothership.setTotalResources(mothership.getTotalResources()-100);
 			System.out.println(mothership.getTotalResources());
+<<<<<<< HEAD
 
+=======
 		}
-
+>>>>>>> FETCH_HEAD
+		}
 	}
 	
 	public ArrayList<Ship> getFleet(){
