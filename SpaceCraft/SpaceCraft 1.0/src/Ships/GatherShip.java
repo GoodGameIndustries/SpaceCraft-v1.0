@@ -44,7 +44,6 @@ public class GatherShip extends Ship{
 		resourceSelected = getClosestResource();
 		
 		resourceSelected = homeShip.getClosestResource();
-		if(resourceSelected!=null){System.out.println("resource selected");}
 		if(resourceSelected!=null&& Math.abs(x-resourceSelected.getX()) < 100 && Math.abs(y-resourceSelected.getY()) < 100 && resourcesCarrying == 0){
 			resourcesCarrying = resourceSelected.gather();
 			if(resourcesCarrying == 0){
