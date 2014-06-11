@@ -23,19 +23,31 @@ public class Bullet extends Ship{
 		Graphics2D g2 = (Graphics2D) g;
 		if(type==0){
 			g2.setColor(Color.yellow);
+			xLim = 3;
+			yLim = 3;
+			this.setBounds(0,0,xLim,yLim);
 			g2.fillOval(0,0,3,3);
 		}
 		else if(type==1){
 			g2.setColor(Color.cyan);
-			g2.fillOval(0,0,7,4);
+			xLim = 4;
+			yLim = 4;
+			this.setBounds(0,0,xLim,yLim);
+			g2.fillOval(0,0,4,4);
 		}
 		else if(type==2){
 			g2.setColor(Color.blue);
-			g2.fillOval(0,0,15,3);
+			xLim = 5;
+			yLim = 5;
+			this.setBounds(0,0,xLim,yLim);
+			g2.fillOval(0,0,5,5);
 		}
 		else if(type==3){
 			g2.setColor(Color.red);
-			g2.fillOval(0,0,20,20);
+			xLim = 7;
+			yLim = 7;
+			this.setBounds(0,0,xLim,yLim);
+			g2.fillOval(0,0,7,7);
 		}
 	}
 	
