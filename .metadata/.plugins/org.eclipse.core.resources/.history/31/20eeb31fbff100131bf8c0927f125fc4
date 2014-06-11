@@ -44,7 +44,6 @@ public class Space extends JPanel implements Runnable{
 	public ArrayList<Resource> resources=new ArrayList<Resource>();
 	private ArrayList<Bullet> stoppedBullets=new ArrayList<Bullet>();
 	public ArrayList<Bullet> bullets=new ArrayList<Bullet>();
-	public ArrayList<SpaceOBJ> playerFleet=new ArrayList<SpaceOBJ>();
 	private static int[][] vec; 
 	private int x,y,xLim=5000,yLim=5000;
 	public Game g;
@@ -206,7 +205,6 @@ public class Space extends JPanel implements Runnable{
 			if(player.getTotalResources() < 0){
 				player.setTotalResources(0);
 			}
-			playerFleet.clear();
 			for(Ship ship:ai.getNew()){
 				this.add(ship);
 				objects.add(ship);
@@ -243,9 +241,6 @@ public class Space extends JPanel implements Runnable{
 					}
 				}
 				obj.recharge();
-				if(obj.team()!=Color.red && obj.team()!=Color.white){
-					playerFleet.add(obj);
-				}
 			}
 			
 			ai.remove(toRemove);
@@ -366,7 +361,6 @@ public class Space extends JPanel implements Runnable{
 			ui.build.resourceCount.setText(""+player.getTotalResources());
 			repaint();
 			ui.update();
-			ai.updatePlayerFleet(playerFleet);
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {

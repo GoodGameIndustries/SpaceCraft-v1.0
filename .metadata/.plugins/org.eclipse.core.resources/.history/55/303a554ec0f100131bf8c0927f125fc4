@@ -206,7 +206,7 @@ public class Space extends JPanel implements Runnable{
 			if(player.getTotalResources() < 0){
 				player.setTotalResources(0);
 			}
-			playerFleet.clear();
+			//playerFleet.clear();
 			for(Ship ship:ai.getNew()){
 				this.add(ship);
 				objects.add(ship);
@@ -244,6 +244,7 @@ public class Space extends JPanel implements Runnable{
 				}
 				obj.recharge();
 				if(obj.team()!=Color.red && obj.team()!=Color.white){
+					System.out.println("player ship added");
 					playerFleet.add(obj);
 				}
 			}

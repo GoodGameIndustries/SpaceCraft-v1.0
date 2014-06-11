@@ -244,6 +244,7 @@ public class Space extends JPanel implements Runnable{
 				}
 				obj.recharge();
 				if(obj.team()!=Color.red && obj.team()!=Color.white){
+					System.out.println("player ship added");
 					playerFleet.add(obj);
 				}
 			}

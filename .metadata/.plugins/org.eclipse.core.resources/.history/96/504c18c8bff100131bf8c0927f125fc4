@@ -37,7 +37,6 @@ public class AI {
 	public MotherShip getMotherShip(){return mothership;}
 	
 	public void update(Space space){
-		enemyAttack=0;enemyDefense=0;enemyGather=0;
 		for(SpaceOBJ enemy:enemyFleet){
 			if(enemy instanceof AttackShip){enemyAttack++;}
 			else if(enemy instanceof DefenseShip){enemyDefense++;}
@@ -97,6 +96,7 @@ public class AI {
 	}
 	
 	public void updatePlayerFleet(ArrayList<SpaceOBJ> playerFleet){
+		enemyFleet.clear();
 		enemyFleet=playerFleet;
 	}
 	
