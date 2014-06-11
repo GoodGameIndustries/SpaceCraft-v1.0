@@ -24,10 +24,14 @@ public class Sniper extends AttackShip{
 		health = 175;
 		name = "Sniper";
 		attackType=2;
+
+		maxDistance = 2500;
+
 		ammoBank.clear();
 		for(int i=0;i<100;i++){
 			ammoBank.add(new Bullet(s,x+xLim+20,y+yLim+20));
 		}
+
 	}
 	
 	public void paintComponent(Graphics g){

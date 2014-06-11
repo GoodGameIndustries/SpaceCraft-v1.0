@@ -24,10 +24,14 @@ public class Tank extends AttackShip{
 		health = 500;
 		name = "Tank";
 		attackType=3;
+
+		maxDistance = 1500;
+
 		ammoBank.clear();
 		for(int i=0;i<50;i++){
 			ammoBank.add(new Bullet(s,x+xLim+20,y+yLim+20));
 		}
+
 	}
 	
 	public void paintComponent(Graphics g){

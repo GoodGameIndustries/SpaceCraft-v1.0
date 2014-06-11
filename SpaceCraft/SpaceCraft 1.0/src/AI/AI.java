@@ -4,9 +4,11 @@ package AI;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import Frame.*;
+import Frame.Space;
 import Objects.SpaceOBJ;
-import Ships.*;
+import Ships.BasicGather;
+import Ships.MotherShip;
+import Ships.Ship;
 
 public class AI {
 	protected MotherShip mothership;
@@ -21,8 +23,17 @@ public class AI {
 	public MotherShip getMotherShip(){return mothership;}
 	
 	public void update(Space space){
+<<<<<<< HEAD
 		if(mothership.getTotalResources()>100){
 			newShip.add(new BasicGather(space,mothership.getX()+mothership.getXLim()+20,mothership.getY()+mothership.getYLim()+20,mothership,Color.red));
+=======
+		//newShip.add(new Scout(space,mothership.getX(),mothership.getY()+200,Color.red));
+		if(mothership.getTotalResources() > 100){
+			newShip.add(new BasicGather(space,mothership.getX(),mothership.getY()+200, mothership, Color.red));
+			
+			mothership.setTotalResources(mothership.getTotalResources()-100);
+			System.out.println(mothership.getTotalResources());
+>>>>>>> FETCH_HEAD
 		}
 	}
 	
