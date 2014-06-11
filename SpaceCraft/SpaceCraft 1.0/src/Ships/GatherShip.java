@@ -27,7 +27,7 @@ public class GatherShip extends Ship{
 		super(s,x, y,20,25,b);
 		this.homeShip = homeShip;
 		health=50;
-		resourceSelected = homeShip.getClosestResource();
+		resourceSelected = getClosestResource();
 		target = resourceSelected;
 	}
 
@@ -41,13 +41,13 @@ public class GatherShip extends Ship{
 	
 	public void move(){
 		super.move();
-		resourceSelected = homeShip.getClosestResource();
+		resourceSelected = getClosestResource();
 		
 		if(resourceSelected!=null&& Math.abs(x-resourceSelected.getX()) < 100 && Math.abs(y-resourceSelected.getY()) < 100 && resourcesCarrying == 0){
 			resourcesCarrying = resourceSelected.gather();
 			if(resourcesCarrying == 0){
 				space.resources.remove(resourceSelected);
-				resourceSelected = homeShip.getClosestResource();
+				resourceSelected = getClosestResource();
 			}
 		}
 		else if(Math.abs(x-homeShip.getX()) < 100 && Math.abs(y-homeShip.getY()) < 100  && resourcesCarrying > 0){
@@ -71,4 +71,17 @@ public class GatherShip extends Ship{
 
 	public String getInfo(){return "Name: " + name +" Resources: " + resourcesCarrying +" Health: "+health+" Speed: "+speed+" X: "+x+" Y: "+y;}
 	
+	
+	public Resource getClosestResource(){
+		Resource result = null;
+		for(Resource r : space.resources){
+			if(result == null){result = r;}
+			else if(space.getDistance(this,r) < space.getDistance(this,result)){
+				result = r;
+			}
+		}
+		
+		return result;
+		
+	}
 }
