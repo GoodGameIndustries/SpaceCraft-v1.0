@@ -69,7 +69,7 @@ public class Ship extends SpaceOBJ{
 	}
 	
 	public void move(){
-		if(target != null && (team.equals(space.getTeam())||team.equals(Color.white))){
+		if(target != null/* && (team.equals(space.getTeam())||team.equals(Color.white))*/){
 			calculateMove(target);
 		}
 	}

@@ -26,6 +26,7 @@ public class AI {
 		//newShip.add(new Scout(space,mothership.getX(),mothership.getY()+200,Color.red));
 		if(mothership.getTotalResources() > 100){
 			newShip.add(new BasicGather(space,mothership.getX(),mothership.getY()+200, mothership, Color.red));
+			
 			mothership.setTotalResources(mothership.getTotalResources()-100);
 			System.out.println(mothership.getTotalResources());
 		}
