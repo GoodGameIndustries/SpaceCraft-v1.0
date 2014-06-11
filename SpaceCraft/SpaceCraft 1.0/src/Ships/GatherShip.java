@@ -41,13 +41,10 @@ public class GatherShip extends Ship{
 	
 	public void move(){
 		super.move();
-<<<<<<< HEAD
 		resourceSelected = getClosestResource();
 		
-=======
 		resourceSelected = homeShip.getClosestResource();
 		if(resourceSelected!=null){System.out.println("resource selected");}
->>>>>>> origin/master
 		if(resourceSelected!=null&& Math.abs(x-resourceSelected.getX()) < 100 && Math.abs(y-resourceSelected.getY()) < 100 && resourcesCarrying == 0){
 			resourcesCarrying = resourceSelected.gather();
 			if(resourcesCarrying == 0){
