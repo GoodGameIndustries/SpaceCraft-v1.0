@@ -70,6 +70,7 @@ public class Bullet extends Ship{
 			y=(int) (y+(int)((t.getY()+(t.getYLim()/2))-y)*speed*10/r);
 		}
 		else{stopped=true;}
+		System.out.println("<"+x+","+y+">");
 	}
 	
 	public void setStopped(){stopped=true;}

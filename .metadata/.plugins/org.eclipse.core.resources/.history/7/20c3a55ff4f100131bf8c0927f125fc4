@@ -228,7 +228,7 @@ public class Space extends JPanel implements Runnable{
 					System.out.println(getDistance(obj, obj.getTarget()));
 					}
 					if(obj.getTarget()!=null && !(obj.getTarget().team().equals(obj.team())) && getDistance(obj, obj.getTarget()) <= ((AttackShip)obj).getMaxDistance()){
-						if(obj.ammoCount()>0 && obj.fireAgain()){
+						if(obj.ammoCount()>0 && obj.fireAgain() && obj.getAmmoBank().size()>0){
 							Bullet bullet=obj.getAmmoBank().get(0);
 							bullet.setTarget(new Beacon(obj.getTarget().getX(),obj.getTarget().getY(),team));
 							double r=getDistance(obj,obj.getTarget());
@@ -237,7 +237,6 @@ public class Space extends JPanel implements Runnable{
 							bullet.setY((int) (obj.getY()+obj.getYLim()/2+50*(obj.getTarget().getY()+obj.getTarget().getYLim()-obj.getY()-obj.getYLim())/r));
 							bullet.setType(obj.getAttackType());
 							this.add(bullet);bullets.add(bullet);allObjects.add(bullet);
-							obj.ammoUsed();
 						}
 					
 					}
