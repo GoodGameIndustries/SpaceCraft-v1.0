@@ -54,8 +54,6 @@ public class AI {
 			else if(ship instanceof DefenseShip){aiDefense++;}
 			else if(ship instanceof GatherShip){aiGather++;}
 		}
-		if(aiGather*10>mothership.getTotalResources()){select=-1;}
-		enemyAttack=+2;enemyDefense=+2;enemyGather=+2;
 		int difAttack=enemyAttack-aiAttack;int difDefense=enemyDefense-aiDefense;int difGather=enemyGather-aiGather;
 		System.out.println("enemy attack: "+enemyAttack+" enemy defense: "+enemyDefense+" enemy gather: "+enemyGather);
 		difAttack=(difAttack>0)?difAttack:0;difGather=(difGather>0)?difGather:0;difDefense=(difDefense>0)?difDefense:0;
