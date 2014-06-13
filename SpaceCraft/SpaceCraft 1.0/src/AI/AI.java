@@ -117,8 +117,9 @@ public class AI {
 		makeShip(select,space);
 		attackAi.updateFleet(attackFleet);
 		attackAi.update(space);
+		defenseAi.update(space);
 		System.out.println("mother: "+mothership.getTotalResources());
-		
+		mothership.setTarget(mothership.getClosestResource());
 	}
 	
 	public ArrayList<Ship> getFleet(){
