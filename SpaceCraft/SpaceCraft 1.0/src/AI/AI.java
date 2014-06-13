@@ -224,8 +224,7 @@ public class AI {
 			break;
 			
 		}
-<<<<<<< HEAD
-=======
+
 		/*if(needGather){
 			if(mothership.getTotalResources()>300){
 				newShip.add(new AdvancedGather(space, mothership.getX()-200, mothership.getY(), mothership, Color.red));
@@ -243,7 +242,7 @@ public class AI {
 		mothership.setTarget(mothership.getClosestResource());
 		System.out.println("mother: "+mothership.getTotalResources());
 		
->>>>>>> FETCH_HEAD
+
 	}
 	
 
