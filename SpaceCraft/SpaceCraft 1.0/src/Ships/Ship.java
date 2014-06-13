@@ -80,9 +80,13 @@ public class Ship extends SpaceOBJ{
 	
 	protected void calculateMove(SpaceOBJ t) {
 		double r=calculateDistance(t);
-		if(r>100){
+		if(r>10){
 			x=(int) (x+(int)(t.getX()-x)*speed*10/r);
 			y=(int) (y+(int)(t.getY()-y)*speed*10/r);
+		}
+		else{
+			x=target.getX();
+			y=target.getY();
 		}
 		//System.out.println("<"+x+","+y+">");
 	}

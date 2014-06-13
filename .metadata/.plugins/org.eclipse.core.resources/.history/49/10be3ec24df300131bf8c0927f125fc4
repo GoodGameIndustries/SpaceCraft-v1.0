@@ -236,7 +236,8 @@ public class AI {
 				mothership.setTotalResources(mothership.getTotalResources()-100);
 			}
 		}*/
-
+<<<<<<< HEAD
+=======
 		attackAi.updateFleet(attackFleet);
 		attackAi.update(space);
 		defenseAi.update(space);
@@ -244,7 +245,47 @@ public class AI {
 		
 	}
 	
-
+	public ArrayList<Ship> getFleet(){
+		return fleet;
+	}
+	
+	public ArrayList<Ship> getNew(){
+		return newShip;
+	}
+	
+	public void updatePlayerFleet(ArrayList<SpaceOBJ> playerFleet){
+		enemyFleet=playerFleet;
+	}
+	
+	public void remove(ArrayList<SpaceOBJ> remove){
+		fleet.addAll(newShip);
+		newShip.clear();
+		for(SpaceOBJ obj:remove){
+			if(obj instanceof Ship && obj.team().equals(Color.red)){
+				toRemove.add((Ship)obj);
+			}
+		}
+		for(Ship destroyed:toRemove){
+			fleet.remove(destroyed);
+			if(destroyed instanceof AttackShip){
+				attackFleet.remove(destroyed);
+			}
+		}
+	}
+	
+	private int[] sort(int[] array){
+		int key=0;
+		for(int i=1;i<array.length;i++){
+			key=array[i];
+			for(int j=i-1;(j>=0)&&(array[j]<key);j--){
+				array[j+1]=array[j];
+				array[j+1]=key;
+			}
+		}
+		return array;
+>>>>>>> FETCH_HEAD
+	}
+	
 }
 
 
