@@ -97,7 +97,7 @@ public class AI {
 		}
 		if(order[pri]==0 || pri==6 || needGather){
 			select=0;
-			if(aiGather*75>mothership.getTotalResources()){
+			if(aiGather*100>mothership.getTotalResources()){
 				System.out.println("enough gather");
 				select=-1;
 				needGather=false;}

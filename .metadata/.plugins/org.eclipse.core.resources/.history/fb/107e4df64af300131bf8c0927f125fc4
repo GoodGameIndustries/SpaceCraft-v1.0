@@ -78,9 +78,5 @@ public class Bullet extends Ship{
 	
 	public int getType(){return type;}
 	
-	public void setTeam(Color color){
-		team=color;
-	}
-	
 	
 }
