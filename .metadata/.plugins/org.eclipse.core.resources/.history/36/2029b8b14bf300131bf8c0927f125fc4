@@ -108,55 +108,7 @@ public class AI {
 		else if(pri==3 && !needGather){select=4;}
 		else if(pri==4 && !needGather){select=5;}
 		else if(pri==5 && !needGather){select=6;}
-		makeShip(select,space);
 		
-		attackAi.updateFleet(attackFleet);
-		attackAi.update(space);
-		System.out.println("mother: "+mothership.getTotalResources());
-		
-	}
-	
-	public ArrayList<Ship> getFleet(){
-		return fleet;
-	}
-	
-	public ArrayList<Ship> getNew(){
-		return newShip;
-	}
-	
-	public void updatePlayerFleet(ArrayList<SpaceOBJ> playerFleet){
-		enemyFleet=playerFleet;
-	}
-	
-	public void remove(ArrayList<SpaceOBJ> remove){
-		fleet.addAll(newShip);
-		newShip.clear();
-		for(SpaceOBJ obj:remove){
-			if(obj instanceof Ship && obj.team().equals(Color.red)){
-				toRemove.add((Ship)obj);
-			}
-		}
-		for(Ship destroyed:toRemove){
-			fleet.remove(destroyed);
-			if(destroyed instanceof AttackShip){
-				attackFleet.remove(destroyed);
-			}
-		}
-	}
-	
-	private int[] sort(int[] array){
-		int key=0;
-		for(int i=1;i<array.length;i++){
-			key=array[i];
-			for(int j=i-1;(j>=0)&&(array[j]<key);j--){
-				array[j+1]=array[j];
-				array[j+1]=key;
-			}
-		}
-		return array;
-	}
-	
-	private void makeShip(int select,Space space){
 		switch(select){
 		case 0:
 			/*if(mothership.getTotalResources()>300){
@@ -234,6 +186,50 @@ public class AI {
 				mothership.setTotalResources(mothership.getTotalResources()-100);
 			}
 		}*/
+		attackAi.updateFleet(attackFleet);
+		attackAi.update(space);
+		System.out.println("mother: "+mothership.getTotalResources());
+		
+	}
+	
+	public ArrayList<Ship> getFleet(){
+		return fleet;
+	}
+	
+	public ArrayList<Ship> getNew(){
+		return newShip;
+	}
+	
+	public void updatePlayerFleet(ArrayList<SpaceOBJ> playerFleet){
+		enemyFleet=playerFleet;
+	}
+	
+	public void remove(ArrayList<SpaceOBJ> remove){
+		fleet.addAll(newShip);
+		newShip.clear();
+		for(SpaceOBJ obj:remove){
+			if(obj instanceof Ship && obj.team().equals(Color.red)){
+				toRemove.add((Ship)obj);
+			}
+		}
+		for(Ship destroyed:toRemove){
+			fleet.remove(destroyed);
+			if(destroyed instanceof AttackShip){
+				attackFleet.remove(destroyed);
+			}
+		}
+	}
+	
+	private int[] sort(int[] array){
+		int key=0;
+		for(int i=1;i<array.length;i++){
+			key=array[i];
+			for(int j=i-1;(j>=0)&&(array[j]<key);j--){
+				array[j+1]=array[j];
+				array[j+1]=key;
+			}
+		}
+		return array;
 	}
 	
 }
