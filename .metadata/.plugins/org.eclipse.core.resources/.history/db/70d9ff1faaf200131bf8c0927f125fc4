@@ -241,7 +241,7 @@ public class Space extends JPanel implements Runnable{
 								obj.ammoUsed();
 							}
 							catch(IndexOutOfBoundsException e){
-								System.out.println("out of ammo");
+								
 							}
 						}
 					
