@@ -29,6 +29,7 @@ public class AI {
 	protected int enemyAttack=0;protected int enemyDefense=0;protected int enemyGather=0;
 	protected int aiAttack=0;protected int aiDefense=0;protected int aiGather=0;
 	protected AIatk attackAi;
+	protected AIdef defenseAi;
 	protected int enemyScout=0;protected int enemyDestroyer=0;protected int enemySniper=0;protected int enemyTank=0;
 	protected int enemyBrick=0;protected int enemyBubble=0;
 	protected int aiScout=0;protected int aiDestroyer=0;protected int aiSniper=0;protected int aiTank=0;
@@ -41,6 +42,7 @@ public class AI {
 	public AI(int x, int y, Space space){
 		mothership=new MotherShip(x,y,space,Color.red);
 		attackAi=new AIatk(space);
+		defenseAi=new AIdef(space);
 		newShip.add(new BasicGather(space, mothership.getX()-200, mothership.getY(), mothership, Color.red));
 		mothership.setTotalResources(mothership.getTotalResources()-100);
 	}
@@ -188,6 +190,7 @@ public class AI {
 		}*/
 		attackAi.updateFleet(attackFleet);
 		attackAi.update(space);
+		defenseAi.update(space);
 		System.out.println("mother: "+mothership.getTotalResources());
 		
 	}

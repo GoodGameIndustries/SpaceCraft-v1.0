@@ -23,7 +23,7 @@ public class AIdef {
 	
 	public AIdef(Space space){
 		this.space = space;
-		this.fleet = space.ai.getFleet();
+		//this.fleet = space.ai.getFleet();
 	}
 	
 	public void update(Space space){
@@ -35,25 +35,25 @@ public class AIdef {
 				def.get(1).setTarget(new Beacon(def.get(0).getX()-def.get(1).getXLim(),def.get(0).getY(),Color.red));
 				
 				if(def.size()>2){
-					def.get(2).setTarget(new Beacon(def.get(0).getX(),def.get(0).getY()-def.get(2).getY(),Color.red));
+					def.get(2).setTarget(new Beacon(def.get(0).getX(),def.get(0).getY()-def.get(2).getYLim(),Color.red));
 					
 					if(def.size()>3){
-						def.get(3).setTarget(new Beacon(def.get(0).getX(),def.get(0).getY()+def.get(3).getY(),Color.red));
+						def.get(3).setTarget(new Beacon(def.get(0).getX(),def.get(0).getY()+def.get(3).getYLim(),Color.red));
 						
 						if(def.size()>4){
 							def.get(4).setTarget(new Beacon(def.get(0).getX()+def.get(4).getXLim(),def.get(0).getY(),Color.red));
 							
 							if(def.size()>5){
-								def.get(5).setTarget(new Beacon(def.get(0).getX()-def.get(5).getXLim(),def.get(0).getY()-def.get(5).getY(),Color.red));
+								def.get(5).setTarget(new Beacon(def.get(0).getX()-def.get(5).getXLim(),def.get(0).getY()-def.get(5).getYLim(),Color.red));
 								
 								if(def.size()>6){
-									def.get(6).setTarget(new Beacon(def.get(0).getX()+def.get(6).getXLim(),def.get(0).getY()-def.get(6).getY(),Color.red));
+									def.get(6).setTarget(new Beacon(def.get(0).getX()+def.get(6).getXLim(),def.get(0).getY()-def.get(6).getYLim(),Color.red));
 									
 									if(def.size()>7){
-										def.get(7).setTarget(new Beacon(def.get(0).getX()-def.get(7).getXLim(),def.get(0).getY()+def.get(7).getY(),Color.red));
+										def.get(7).setTarget(new Beacon(def.get(0).getX()-def.get(7).getXLim(),def.get(0).getY()+def.get(7).getYLim(),Color.red));
 										
 										if(def.size()>8){
-											def.get(8).setTarget(new Beacon(def.get(0).getX()+def.get(8).getXLim(),def.get(0).getY()+def.get(8).getY(),Color.red));
+											def.get(8).setTarget(new Beacon(def.get(0).getX()+def.get(8).getXLim(),def.get(0).getY()+def.get(8).getYLim(),Color.red));
 
 										}
 									}
