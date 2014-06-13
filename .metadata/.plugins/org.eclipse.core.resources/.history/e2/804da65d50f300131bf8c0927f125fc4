@@ -88,8 +88,8 @@ public class AI {
 		int difDestroyer=(enemyDestroyer+1-aiDestroyer>0)?enemyDestroyer+1-aiDestroyer:0;order[1]=difDestroyer;
 		int difSniper=(enemySniper+1-aiSniper>0)?enemySniper+1-aiSniper:0;order[2]=difSniper;
 		int difTank=(enemyTank+1-aiTank>0)?enemyTank+1-aiTank:0;order[3]=difTank;
-		int difBrick=(enemyBrick-aiBrick>0)?enemyBrick+1-aiBrick:0;order[4]=difBrick;
-		int difBubble=(enemyBubble-aiBubble>0)?enemyBubble+1-aiBubble:0;order[5]=difBubble;
+		int difBrick=(enemyBrick+1-aiBrick>0)?enemyBrick+1-aiBrick:0;order[4]=difBrick;
+		int difBubble=(enemyBubble+1-aiBubble>0)?enemyBubble+1-aiBubble:0;order[5]=difBubble;
 		int difGather=(enemyGather+1-aiGather>0)?enemyGather+1-aiGather:0;order[6]=difGather;
 		int pri=0;
 		for(int i=0;i<order.length-1;i++){
