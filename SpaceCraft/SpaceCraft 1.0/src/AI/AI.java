@@ -64,7 +64,7 @@ public class AI {
 			else if(enemy instanceof DefenseShip){
 				enemyDefense++;
 				if(enemy instanceof BrickShip){enemyBrick++;}
-				else if(enemy instanceof BubbleShip){enemyBubble++;}
+				//else if(enemy instanceof BubbleShip){enemyBubble++;}
 				}
 			else if(enemy instanceof GatherShip){enemyGather++;}
 		}
@@ -220,15 +220,30 @@ public class AI {
 				needGather=true;
 			break;
 		case 6:
-			if(mothership.getTotalResources()>100){
-				newShip.add(new BubbleShip(space, mothership.getX()-200, mothership.getY(), Color.red));
-				mothership.setTotalResources(mothership.getTotalResources()-100);
-			}
-			else
 				needGather=true;
 			break;
 			
 		}
+<<<<<<< HEAD
+=======
+		/*if(needGather){
+			if(mothership.getTotalResources()>300){
+				newShip.add(new AdvancedGather(space, mothership.getX()-200, mothership.getY(), mothership, Color.red));
+				mothership.setTotalResources(mothership.getTotalResources()-300);
+			}
+			else if(mothership.getTotalResources()>100){
+				newShip.add(new BasicGather(space, mothership.getX()-200, mothership.getY(), mothership, Color.red));
+				mothership.setTotalResources(mothership.getTotalResources()-100);
+			}
+		}*/
+
+		attackAi.updateFleet(attackFleet);
+		attackAi.update(space);
+		defenseAi.update(space);
+		mothership.setTarget(mothership.getClosestResource());
+		System.out.println("mother: "+mothership.getTotalResources());
+		
+>>>>>>> FETCH_HEAD
 	}
 	
 
