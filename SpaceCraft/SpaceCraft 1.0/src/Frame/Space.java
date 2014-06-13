@@ -53,7 +53,7 @@ public class Space extends JPanel implements Runnable{
 	private Dimension dim;
 	public MotherShip player;
 	private Color team = Color.blue;
-	private AI ai;
+	public AI ai;
 	
 	public Space(Game g, Dimension dim){
 		this.dim=dim;
