@@ -84,10 +84,10 @@ public class AI {
 			else if(ship instanceof GatherShip){aiGather++;}
 		}
 		int[] order=new int[7];
-		int difScout=(enemyScout-aiScout>0)?enemyScout+1-aiScout:0;order[0]=difScout;
-		int difDestroyer=(enemyDestroyer-aiDestroyer>0)?enemyDestroyer+1-aiDestroyer:0;order[1]=difDestroyer;
-		int difSniper=(enemySniper-aiSniper>0)?enemySniper+1-aiSniper:0;order[2]=difSniper;
-		int difTank=(enemyTank-aiTank>0)?enemyTank+1-aiTank:0;order[3]=difTank;
+		int difScout=(enemyScout+1-aiScout>0)?enemyScout+1-aiScout:0;order[0]=difScout;
+		int difDestroyer=(enemyDestroyer+1-aiDestroyer>0)?enemyDestroyer+1-aiDestroyer:0;order[1]=difDestroyer;
+		int difSniper=(enemySniper+1-aiSniper>0)?enemySniper+1-aiSniper:0;order[2]=difSniper;
+		int difTank=(enemyTank+1-aiTank>0)?enemyTank+1-aiTank:0;order[3]=difTank;
 		int difBrick=(enemyBrick-aiBrick>0)?enemyBrick+1-aiBrick:0;order[4]=difBrick;
 		int difBubble=(enemyBubble-aiBubble>0)?enemyBubble+1-aiBubble:0;order[5]=difBubble;
 		int difGather=(enemyGather+1-aiGather>0)?enemyGather+1-aiGather:0;order[6]=difGather;
@@ -224,6 +224,28 @@ public class AI {
 			break;
 			
 		}
+<<<<<<< HEAD
+
+=======
+
+		/*if(needGather){
+			if(mothership.getTotalResources()>300){
+				newShip.add(new AdvancedGather(space, mothership.getX()-200, mothership.getY(), mothership, Color.red));
+				mothership.setTotalResources(mothership.getTotalResources()-300);
+			}
+			else if(mothership.getTotalResources()>100){
+				newShip.add(new BasicGather(space, mothership.getX()-200, mothership.getY(), mothership, Color.red));
+				mothership.setTotalResources(mothership.getTotalResources()-100);
+			}
+		}*/
+
+		attackAi.updateFleet(attackFleet);
+		attackAi.update(space);
+		defenseAi.update(space);
+		mothership.setTarget(mothership.getClosestResource());
+		System.out.println("mother: "+mothership.getTotalResources());
+		
+>>>>>>> FETCH_HEAD
 
 	}
 	
