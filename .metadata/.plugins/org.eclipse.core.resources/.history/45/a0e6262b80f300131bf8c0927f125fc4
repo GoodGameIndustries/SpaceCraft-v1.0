@@ -1,0 +1,133 @@
+package Ships;
+ import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import Frame.Space;
+import Objects.Resource;
+import Objects.SpaceOBJ;
+
+/**
+ * 
+ */
+
+/**
+ * @author Emmett Deen
+ * @version 1.0
+ * @date May 13, 2014
+ */
+public class Ship extends SpaceOBJ{
+
+	protected SpaceOBJ target;
+	protected int speed = 1;
+	//protected int health = 1;
+	protected String name = "Ship";
+	protected int maxHealth = 0;
+	protected int temp = 0;
+	protected int fleet=0;
+	
+	
+	public Ship(Space s,int x, int y, Color team){
+		this.x =x;
+		this.y =y;
+		xLim = 10;
+		yLim = 10;
+		this.team=team;
+		this.setBounds(x,y,xLim,yLim);
+		health=1;
+		
+		
+	}
+	public Ship(Space s,int x, int y,int length, int width,Color team){
+		this.x =x;
+		this.y =y;
+		space = s;
+		xLim = length;
+		yLim = width;
+		this.team=team;
+		this.setBounds(x,y,length,width);
+		health=1;
+		
+		
+	}
+	
+	public Ship(Space s,int x, int y,int length, int width,Color team, int fleet){
+		this.x =x;
+		this.y =y;
+		space = s;
+		xLim = length;
+		yLim = width;
+		this.team=team;
+		this.setBounds(x,y,length,width);
+		health=1;
+		this.fleet=fleet;
+		
+	}
+	
+	public void setTarget(SpaceOBJ t){
+		target = t;
+	}
+	
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setColor(Color.white);
+		g2.fillOval(0,0,xLim,yLim);
+	}
+	
+	public void drawHealth(Graphics g){
+		
+		if(health > maxHealth){maxHealth = health;}
+		//temp=temp+(maxHealth-health);
+		g.setColor(Color.GREEN);
+		g.fillRect(0, 0, (int)(xLim*((double)health/maxHealth)), 5);
+	}
+	
+	public void move(){
+		if(target != null/* && (team.equals(space.getTeam())||team.equals(Color.white))*/){
+			calculateMove(target);
+		}
+	}
+	
+	protected double calculateDistance(SpaceOBJ target){
+		return Math.pow(Math.pow(target.getX()-x,2)+Math.pow(target.getY()-y,2),0.5);
+	}
+	
+	protected void calculateMove(SpaceOBJ t) {
+		double r=calculateDistance(t);
+		if(r>10){
+			x=(int) (x+(int)(t.getX()-x)*speed*10/r);
+			y=(int) (y+(int)(t.getY()-y)*speed*10/r);
+		}
+		else{
+			x=target.getX();
+			y=target.getY();
+		}
+		//System.out.println("<"+x+","+y+">");
+	}
+	
+	public SpaceOBJ getTarget(){return target;}
+	
+	public String getInfo(){return "Name: " + name +" Health: "+health+" Speed: "+speed+" X: "+x+" Y: "+y;}
+	
+	public void assignFleet(int fleet){this.fleet=fleet;}
+	
+	public int fleet(){return fleet;}
+	
+	public Ship getClosestEnemy(){
+		SpaceOBJ result = null;
+		for(SpaceOBJ obj: space.playerFleet){
+			if(obj instanceof AttackShip && obj.team()==Color.blue){
+				if(result == null){result = obj;}
+				else if(space.getDistance(this,obj) < space.getDistance(this,result)){
+					result = obj;
+				}
+			}
+		}
+		
+		return (Ship)result;
+		
+	}
+	
+	
+}

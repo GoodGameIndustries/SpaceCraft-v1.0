@@ -37,6 +37,11 @@ public class AI {
 	protected boolean needGather=false;
 	protected ArrayList<Ship> attackFleet=new ArrayList<Ship>();
 	
+	protected ArrayList<Ship> fleet01=new ArrayList<Ship>();//attack mothership
+	protected ArrayList<Ship> fleet02=new ArrayList<Ship>();//attack enemy attack
+	protected ArrayList<Ship> fleet03=new ArrayList<Ship>();//defense
+	protected ArrayList<Ship> fleet04=new ArrayList<Ship>();//reserve
+	
 	private int select = -1; //0=gather,1=attack,2=defense
 	
 	public AI(int x, int y, Space space){
@@ -44,6 +49,12 @@ public class AI {
 		attackAi=new AIatk(space);
 		defenseAi=new AIdef(space);
 		newShip.add(new BasicGather(space, mothership.getX()-200, mothership.getY(), mothership, Color.red));
+		Scout scout=new Scout(space, mothership.getX()-200, mothership.getY(), Color.red);scout.assignFleet(4);fleet01.add(scout);
+		newShip.add(scout);
+		BrickShip b=new BrickShip(space, mothership.getX()-200, mothership.getY(), Color.red);b.assignFleet(3);fleet03.add(b);
+		newShip.add(b);
+		Destroyer destroyer=new Destroyer(space, mothership.getX()-200, mothership.getY(), Color.red);destroyer.assignFleet(2);fleet02.add(destroyer);
+		newShip.add(destroyer);
 		mothership.setTotalResources(mothership.getTotalResources()-100);
 	}
 	
@@ -52,7 +63,8 @@ public class AI {
 	public void update(Space space){
 		enemyAttack=0;enemyDefense=0;enemyGather=0;
 		aiAttack=0;aiDefense=0;aiGather=0;
-		
+		aiScout=0;aiDestroyer=0;aiSniper=0;aiTank=0;
+		aiBrick=0;aiBubble=0;
 		for(SpaceOBJ enemy:enemyFleet){
 			if(enemy instanceof AttackShip){
 				enemyAttack++;
@@ -84,10 +96,10 @@ public class AI {
 			else if(ship instanceof GatherShip){aiGather++;}
 		}
 		int[] order=new int[7];
-		int difScout=(enemyScout-aiScout>0)?enemyScout+1-aiScout:0;order[0]=difScout;
-		int difDestroyer=(enemyDestroyer-aiDestroyer>0)?enemyDestroyer+1-aiDestroyer:0;order[1]=difDestroyer;
-		int difSniper=(enemySniper-aiSniper>0)?enemySniper+1-aiSniper:0;order[2]=difSniper;
-		int difTank=(enemyTank-aiTank>0)?enemyTank+1-aiTank:0;order[3]=difTank;
+		int difScout=(enemyScout+1-aiScout>0)?enemyScout+1-aiScout:0;order[0]=difScout;
+		int difDestroyer=(enemyDestroyer+1-aiDestroyer>0)?enemyDestroyer+1-aiDestroyer:0;order[1]=difDestroyer;
+		int difSniper=(enemySniper+1-aiSniper>0)?enemySniper+1-aiSniper:0;order[2]=difSniper;
+		int difTank=(enemyTank+1-aiTank>0)?enemyTank+1-aiTank:0;order[3]=difTank;
 		int difBrick=(enemyBrick-aiBrick>0)?enemyBrick+1-aiBrick:0;order[4]=difBrick;
 		int difBubble=(enemyBubble-aiBubble>0)?enemyBubble+1-aiBubble:0;order[5]=difBubble;
 		int difGather=(enemyGather+1-aiGather>0)?enemyGather+1-aiGather:0;order[6]=difGather;
@@ -97,29 +109,74 @@ public class AI {
 				pri=i+1;
 			}
 		}
-		if(order[pri]==0 || pri==6 || needGather){
+		if(pri==6 || needGather){
 			select=0;
 			if(aiGather*75>mothership.getTotalResources()){
 				System.out.println("enough gather");
 				select=-1;
 				needGather=false;}
 			}
-		else if(pri==0 && !needGather){select=1;}
-		else if(pri==1 && !needGather){select=2;}
-		else if(pri==2 && !needGather){select=3;}
-		else if(pri==3 && !needGather){select=4;}
-		else if(pri==4 && !needGather){select=5;}
+		else if(pri==0 && !needGather){select=1;}//1:scout
+		else if(pri==1 && !needGather){select=2;}//2:destroyer
+		else if(pri==2 && !needGather){select=3;}//3:sniper
+		else if(pri==3 && !needGather){select=4;}//4:tank
+		else if(pri==4 && !needGather){select=5;}//5:brick
 		else if(pri==5 && !needGather){select=6;}
 		
-		if(order[pri]==0){
-			if(aiBrick<9){select=5;}
+		if(pri==0){makeShip(1,space,4);}
+		//else if(pri==1 || pri==2 || pri==3){makeShip(pri+1,space,4);}
+		else if(pri==4 || pri==5){makeShip(pri+1,space,3);}
+		
+		if(aiBrick<9){makeShip(5,space,3);}//fleet03:defense
+		
+		int fleet2DesCount=0;int fleet2SnipCount=0;int fleet2TankCount=0;
+		for(Ship ship:fleet02){
+			if(ship instanceof Destroyer){fleet2DesCount++;}
+			else if(ship instanceof Sniper){fleet2SnipCount++;}
+			else if(ship instanceof Tank){fleet2TankCount++;}
 		}
-		makeShip(select,space);
-		attackAi.updateFleet(attackFleet);
-		attackAi.update(space);
-		defenseAi.update(space);
-		System.out.println("mother: "+mothership.getTotalResources());
+		int fleet1DesCount=0;int fleet1SnipCount=0;int fleet1TankCount=0;
+		for(Ship ship:fleet01){
+			if(ship instanceof Destroyer){fleet1DesCount++;}
+			else if(ship instanceof Sniper){fleet1SnipCount++;}
+			else if(ship instanceof Tank){fleet1TankCount++;}
+		}
+		int fleet02Needed=14-(fleet2DesCount+fleet2SnipCount+fleet2TankCount);
+		int fleet01Needed=12-(fleet1DesCount+fleet1SnipCount+fleet1TankCount);
+		
+		if(fleet01Needed-fleet02Needed<5){
+			if(fleet2DesCount<8){makeShip(2,space,2);System.out.println("more for fleet 2");}
+			else if(fleet2SnipCount<4){makeShip(3,space,2);}
+			else if(fleet2TankCount<2){makeShip(4,space,2);}
+		}
+		
+		
+		if(fleet1SnipCount<4){makeShip(3,space,1);}
+		else if(fleet1TankCount<4){makeShip(4,space,1);}
+		else if(fleet1DesCount<4){makeShip(2,space,1);}
+			
+		
+		fleet01.clear();fleet02.clear();fleet03.clear();fleet04.clear();
+		
+		for(Ship ship:fleet){
+			if(ship.fleet()==1){fleet01.add(ship);System.out.println("fleet01 and proud");}
+		    if(ship.fleet()==2){fleet02.add(ship);System.out.println("2 is the best");}
+			else if(ship.fleet()==3){fleet03.add(ship);}
+			else if(ship.fleet()==4){fleet04.add(ship);}
+		}
+		
+		int reserve=0;
+		
+		
+		if(fleet01Needed<=0 && fleet02Needed<=0){reserve=0;}
+		else{reserve=(fleet01Needed>fleet02Needed)?1:2;}
+		
+		if(fleet01Needed<=0 && fleet02Needed<=0 && aiBrick>=9){if(!needGather){makeShip(1,space,4);}}
+		
+		attackAi.update(space, fleet,reserve);
+		defenseAi.update(space,fleet03);
 		mothership.setTarget(mothership.getClosestResource());
+		
 	}
 	
 	public ArrayList<Ship> getFleet(){
@@ -162,7 +219,7 @@ public class AI {
 		return array;
 	}
 	
-	private void makeShip(int select,Space space){
+	private void makeShip(int select,Space space,int fleet){
 		switch(select){
 		case 0:
 			/*if(mothership.getTotalResources()>300){
@@ -171,14 +228,15 @@ public class AI {
 				needGather=false;
 			}*/
 			if(mothership.getTotalResources()>100){
-				newShip.add(new BasicGather(space, mothership.getX()-200, mothership.getY(), mothership, Color.red));
+				BasicGather g=new BasicGather(space, mothership.getX()-200, mothership.getY(), mothership, Color.red);g.assignFleet(fleet);
+				newShip.add(g);
 				mothership.setTotalResources(mothership.getTotalResources()-100);
 				needGather=false;
 			}
 			break;
 		case 4:
 			if(mothership.getTotalResources()>750){
-				Tank tank=new Tank(space, mothership.getX()-200, mothership.getY(), Color.red);
+				Tank tank=new Tank(space, mothership.getX()-200, mothership.getY(), Color.red);tank.assignFleet(fleet);
 				newShip.add(tank);attackFleet.add(tank);
 				mothership.setTotalResources(mothership.getTotalResources()-750);
 			}
@@ -187,7 +245,7 @@ public class AI {
 			break;
 		case 3:
 			if(mothership.getTotalResources()>500){
-				Sniper sniper=new Sniper(space, mothership.getX()-200, mothership.getY(), Color.red);
+				Sniper sniper=new Sniper(space, mothership.getX()-200, mothership.getY(), Color.red);sniper.assignFleet(fleet);
 				newShip.add(sniper);attackFleet.add(sniper);
 				mothership.setTotalResources(mothership.getTotalResources()-500);
 			}
@@ -196,7 +254,7 @@ public class AI {
 			break;
 		case 2:
 			if(mothership.getTotalResources()>300){
-				Destroyer destroyer=new Destroyer(space, mothership.getX()-200, mothership.getY(), Color.red);
+				Destroyer destroyer=new Destroyer(space, mothership.getX()-200, mothership.getY(), Color.red);destroyer.assignFleet(fleet);
 				newShip.add(destroyer);attackFleet.add(destroyer);
 				mothership.setTotalResources(mothership.getTotalResources()-300);
 			}
@@ -205,7 +263,7 @@ public class AI {
 			break;
 		case 1:
 			if(mothership.getTotalResources()>100){
-				Scout scout=new Scout(space, mothership.getX()-200, mothership.getY(), Color.red);
+				Scout scout=new Scout(space, mothership.getX()-200, mothership.getY(), Color.red);scout.assignFleet(fleet);
 				newShip.add(scout);attackFleet.add(scout);
 				mothership.setTotalResources(mothership.getTotalResources()-100);
 			}
@@ -214,7 +272,8 @@ public class AI {
 			break;
 		case 5:
 			if(mothership.getTotalResources()>300){
-				newShip.add(new BrickShip(space, mothership.getX()-200, mothership.getY(), Color.red));
+				BrickShip b=new BrickShip(space, mothership.getX()-200, mothership.getY(), Color.red);b.assignFleet(fleet);
+				newShip.add(b);
 				mothership.setTotalResources(mothership.getTotalResources()-300);
 			}
 			else

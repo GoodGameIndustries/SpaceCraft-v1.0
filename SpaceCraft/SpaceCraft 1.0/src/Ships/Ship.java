@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import Frame.Space;
+import Objects.Resource;
 import Objects.SpaceOBJ;
 
 /**
@@ -23,6 +24,7 @@ public class Ship extends SpaceOBJ{
 	protected String name = "Ship";
 	protected int maxHealth = 0;
 	protected int temp = 0;
+	protected int fleet=0;
 	
 	
 	public Ship(Space s,int x, int y, Color team){
@@ -46,6 +48,19 @@ public class Ship extends SpaceOBJ{
 		this.setBounds(x,y,length,width);
 		health=1;
 		
+		
+	}
+	
+	public Ship(Space s,int x, int y,int length, int width,Color team, int fleet){
+		this.x =x;
+		this.y =y;
+		space = s;
+		xLim = length;
+		yLim = width;
+		this.team=team;
+		this.setBounds(x,y,length,width);
+		health=1;
+		this.fleet=fleet;
 		
 	}
 	
@@ -94,6 +109,25 @@ public class Ship extends SpaceOBJ{
 	public SpaceOBJ getTarget(){return target;}
 	
 	public String getInfo(){return "Name: " + name +" Health: "+health+" Speed: "+speed+" X: "+x+" Y: "+y;}
+	
+	public void assignFleet(int fleet){this.fleet=fleet;}
+	
+	public int fleet(){return fleet;}
+	
+	public Ship getClosestEnemy(){
+		SpaceOBJ result = null;
+		for(SpaceOBJ obj: space.playerFleet){
+			if(!(obj instanceof MotherShip) && obj instanceof AttackShip && obj.team()==Color.blue){
+				if(result == null){result = obj;}
+				else if(space.getDistance(this,obj) < space.getDistance(this,result)){
+					result = obj;
+				}
+			}
+		}
+		
+		return (Ship)result;
+		
+	}
 	
 	
 }

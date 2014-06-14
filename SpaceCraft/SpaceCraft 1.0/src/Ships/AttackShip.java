@@ -35,6 +35,8 @@ public class AttackShip extends Ship{
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
 	public AttackShip(Space s,int x, int y,int xLim,int yLim,Color t) {
 		super(s,x, y,xLim,yLim,t);
 		name = "AttackShip";

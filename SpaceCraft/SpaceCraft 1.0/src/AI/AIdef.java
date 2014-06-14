@@ -26,8 +26,8 @@ public class AIdef {
 		//this.fleet = space.ai.getFleet();
 	}
 	
-	public void update(Space space){
-		this.fleet = space.ai.getFleet();
+	public void update(Space space,ArrayList<Ship> fleet){
+		this.fleet = fleet;
 		makeDef();
 		if(def.size()>0){
 			def.get(0).setTarget(space.ai.getMotherShip());
