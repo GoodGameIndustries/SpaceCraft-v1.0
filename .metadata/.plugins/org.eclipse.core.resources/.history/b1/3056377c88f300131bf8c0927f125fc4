@@ -36,6 +36,7 @@ public class AIatk {
 		}
 		for(Ship ship:attackFleet){
 		if(ship.fleet()==1){//fleet01:target motherhsip
+			System.out.println("fleet1 rules");
 			ship.setTarget(enemyMother);
 			
 		}	
@@ -60,29 +61,10 @@ public class AIatk {
 			else if(needed==0){
 				ship.setTarget(new Beacon(space.ai.getMotherShip().getX()-200,space.ai.getMotherShip().getY(),Color.red));
 			}
-		}
-		if(ship.fleet()==5){
-			if(ship.getClosestEnemyDefense()==null){
-				if(needed==1){
-					ship.setTarget(enemyMother);
-				}
-				else if(needed==2){
-					if(ship.getClosestEnemy()!=null){
-						ship.setTarget(enemyMother);
-					}
-					else{
-						ship.setTarget(ship.getClosestEnemy());
-						}
-				}
-				else if(needed==0){
-					ship.setTarget(new Beacon(space.ai.getMotherShip().getX()-200,space.ai.getMotherShip().getY(),Color.red));
-				}
 			}
-			else{ship.setTarget(new Beacon(ship.getClosestEnemyDefense().getX(),ship.getClosestEnemyDefense().getY(),Color.red));}
 		}
-	}
 			
-}
+	}
 			
 	
 	
