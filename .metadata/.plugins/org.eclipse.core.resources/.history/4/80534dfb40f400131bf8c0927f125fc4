@@ -41,7 +41,6 @@ public class AI {
 	protected ArrayList<Ship> fleet02=new ArrayList<Ship>();//attack enemy attack
 	protected ArrayList<Ship> fleet03=new ArrayList<Ship>();//defense
 	protected ArrayList<Ship> fleet04=new ArrayList<Ship>();//reserve
-	protected ArrayList<Ship> fleet05=new ArrayList<Ship>();//suicide scouts against defense
 	
 	private int select = -1; //0=gather,1=attack,2=defense
 	
@@ -156,10 +155,6 @@ public class AI {
 		else if(fleet1TankCount<4){makeShip(4,space,1);}
 		else if(fleet1DesCount<4){makeShip(2,space,1);}
 			
-		if(enemyBrick+enemyBubble>1 && fleet05.size()<4){
-			makeShip(1,space,5);
-		}
-		
 		
 		fleet01.clear();fleet02.clear();fleet03.clear();fleet04.clear();
 		
@@ -168,7 +163,6 @@ public class AI {
 		    if(ship.fleet()==2){fleet02.add(ship);}
 			else if(ship.fleet()==3){fleet03.add(ship);}
 			else if(ship.fleet()==4){fleet04.add(ship);}
-			else if(ship.fleet()==5){fleet05.add(ship);}
 		}
 		
 		int reserve=0;

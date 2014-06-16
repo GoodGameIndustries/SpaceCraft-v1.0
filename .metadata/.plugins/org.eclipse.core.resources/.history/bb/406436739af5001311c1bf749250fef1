@@ -63,10 +63,7 @@ public class AIatk {
 		}
 		if(ship.fleet()==5){
 			if(ship.getClosestEnemyDefense()==null){
-				if(space.ai.getMotherShip().getClosestEnemyShip()!=null){
-					ship.setTarget(new Beacon(ship.getClosestEnemyDefense().getX(),ship.getClosestEnemyDefense().getY(),Color.red));
-				}
-				else if(needed==1){
+				if(needed==1){
 					ship.setTarget(enemyMother);
 				}
 				else if(needed==2){

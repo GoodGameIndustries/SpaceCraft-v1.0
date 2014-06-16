@@ -129,20 +129,5 @@ public class Ship extends SpaceOBJ{
 		
 	}
 	
-	public Ship getClosestEnemyDefense(){
-		SpaceOBJ result = null;
-		for(SpaceOBJ obj: space.playerFleet){
-			if(obj instanceof DefenseShip && obj.team()==Color.blue){
-				if(result == null){result = obj;}
-				else if(space.getDistance(this,obj) < space.getDistance(this,result)){
-					result = obj;
-				}
-			}
-		}
-		
-		return (Ship)result;
-		
-	}
-	
 	
 }

@@ -156,7 +156,7 @@ public class AI {
 		else if(fleet1TankCount<4){makeShip(4,space,1);}
 		else if(fleet1DesCount<4){makeShip(2,space,1);}
 			
-		if(enemyBrick+enemyBubble>1 && fleet05.size()<4){
+		if(enemyBrick+enemyBubble>1){
 			makeShip(1,space,5);
 		}
 		

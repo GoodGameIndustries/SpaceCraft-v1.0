@@ -95,14 +95,11 @@ public class Ship extends SpaceOBJ{
 	
 	protected void calculateMove(SpaceOBJ t) {
 		double r=calculateDistance(t);
-		if(r>10){
+		if(!this.collision(target)){
 			x=(int) (x+(int)(t.getX()-x)*speed*10/r);
 			y=(int) (y+(int)(t.getY()-y)*speed*10/r);
 		}
-		else{
-			x=target.getX();
-			y=target.getY();
-		}
+		
 		//System.out.println("<"+x+","+y+">");
 	}
 	
@@ -118,21 +115,6 @@ public class Ship extends SpaceOBJ{
 		SpaceOBJ result = null;
 		for(SpaceOBJ obj: space.playerFleet){
 			if(!(obj instanceof MotherShip) && obj instanceof AttackShip && obj.team()==Color.blue){
-				if(result == null){result = obj;}
-				else if(space.getDistance(this,obj) < space.getDistance(this,result)){
-					result = obj;
-				}
-			}
-		}
-		
-		return (Ship)result;
-		
-	}
-	
-	public Ship getClosestEnemyDefense(){
-		SpaceOBJ result = null;
-		for(SpaceOBJ obj: space.playerFleet){
-			if(obj instanceof DefenseShip && obj.team()==Color.blue){
 				if(result == null){result = obj;}
 				else if(space.getDistance(this,obj) < space.getDistance(this,result)){
 					result = obj;
