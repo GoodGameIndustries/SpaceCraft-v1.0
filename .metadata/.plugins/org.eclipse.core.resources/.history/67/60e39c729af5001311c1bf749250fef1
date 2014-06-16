@@ -5,7 +5,6 @@ import java.awt.Graphics2D;
 
 import Frame.Space;
 import Objects.Resource;
-import Objects.SpaceOBJ;
 
 /**
  * 
@@ -82,21 +81,6 @@ public class MotherShip extends Ship{
 		}
 		
 		return result;
-		
-	}
-	
-	public Ship getClosestEnemyShip(){
-		SpaceOBJ result = null;
-		for(SpaceOBJ obj: space.playerFleet){
-			if(obj.team()==Color.blue && space.getDistance(this,obj)<1000){
-				if(result == null){result = obj;}
-				else if(space.getDistance(this,obj) < space.getDistance(this,result)){
-					result = obj;
-				}
-			}
-		}
-		
-		return (Ship)result;
 		
 	}
 }

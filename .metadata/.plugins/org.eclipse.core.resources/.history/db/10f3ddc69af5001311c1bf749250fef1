@@ -88,7 +88,7 @@ public class MotherShip extends Ship{
 	public Ship getClosestEnemyShip(){
 		SpaceOBJ result = null;
 		for(SpaceOBJ obj: space.playerFleet){
-			if(obj.team()==Color.blue && space.getDistance(this,obj)<1000){
+			if(obj.team()==Color.blue){
 				if(result == null){result = obj;}
 				else if(space.getDistance(this,obj) < space.getDistance(this,result)){
 					result = obj;
