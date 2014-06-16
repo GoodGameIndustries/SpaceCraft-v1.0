@@ -1,0 +1,66 @@
+!SESSION 2014-06-16 17:10:01.838 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.standard.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.standard.product
+
+!ENTRY org.eclipse.mylyn.tasks.core 4 0 2014-06-16 17:10:23.587
+!MESSAGE Unexpected error while loading repository template extensions
+!SUBENTRY 1 org.eclipse.mylyn.tasks.core 4 0 2014-06-16 17:10:23.587
+!MESSAGE Could not load repository template extension contributed by 'org.springsource.ide.eclipse.dashboard.ui' with connectorKind 'jira'
+!SUBENTRY 1 org.eclipse.mylyn.tasks.core 4 0 2014-06-16 17:10:23.587
+!MESSAGE Could not load repository template extension contributed by 'org.springsource.ide.eclipse.dashboard.ui' with connectorKind 'jira'
+
+!ENTRY org.eclipse.mylyn.tasks.core 1 0 2014-06-16 17:10:28.729
+!MESSAGE Migrating task repository credentials from keyring.
+
+!ENTRY com.smartbear.collaborator 2 0 2014-06-16 17:10:30.130
+!MESSAGE Could not connect to server to run Refresh Action Items
+!STACK 0
+com.smartbear.ccollab.client.CollabClientServerUrlConnectionException: Could not connect to a Collaborator Server at No URL specified.: You must configure a URL for Collaborator
+	at com.smartbear.ccollab.client.LoginUtils.getXmlClient(LoginUtils.java:406)
+	at com.smartbear.collaborator.Collaborator.getConnection(Collaborator.java:181)
+	at com.smartbear.collaborator.jobs.ClientModelRefreshJob.createConnection(ClientModelRefreshJob.java:32)
+	at com.smartbear.collaborator.jobs.ClientModelRefreshJob.createConnection(ClientModelRefreshJob.java:1)
+	at com.smartbear.collaborator.jobs.RefreshJob.getConnection(RefreshJob.java:116)
+	at com.smartbear.collaborator.jobs.RefreshJob.run(RefreshJob.java:152)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.springsource.ide.eclipse.commons.frameworks.core 0 0 2014-06-16 17:10:30.828
+!MESSAGE Result of converting legacy STS 2.x workspace preferences to 3.x
+!SUBENTRY 1 org.springsource.ide.eclipse.commons.frameworks.core 0 0 2014-06-16 17:10:30.828
+!MESSAGE Converted legacy STS plugin preferences
+!SUBENTRY 1 unknown 0 0 2014-06-16 17:10:30.828
+!MESSAGE OK
+!SUBENTRY 1 org.springsource.ide.eclipse.commons.frameworks.core 0 0 2014-06-16 17:10:30.828
+!MESSAGE Converted legacy Roo plugin state locations
+!SUBENTRY 1 org.springsource.ide.eclipse.commons.frameworks.core 0 0 2014-06-16 17:10:30.828
+!MESSAGE Converted legacy STS plugin state locations
+!SESSION 2014-06-16 17:10:42.923 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.standard.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.standard.product
+
+!ENTRY org.eclipse.mylyn.tasks.core 4 0 2014-06-16 17:10:47.735
+!MESSAGE Unexpected error while loading repository template extensions
+!SUBENTRY 1 org.eclipse.mylyn.tasks.core 4 0 2014-06-16 17:10:47.735
+!MESSAGE Could not load repository template extension contributed by 'org.springsource.ide.eclipse.dashboard.ui' with connectorKind 'jira'
+!SUBENTRY 1 org.eclipse.mylyn.tasks.core 4 0 2014-06-16 17:10:47.735
+!MESSAGE Could not load repository template extension contributed by 'org.springsource.ide.eclipse.dashboard.ui' with connectorKind 'jira'
+
+!ENTRY com.smartbear.collaborator 2 0 2014-06-16 17:10:52.958
+!MESSAGE Could not connect to server to run Refresh Action Items
+!STACK 0
+com.smartbear.ccollab.client.CollabClientServerUrlConnectionException: Could not connect to a Collaborator Server at No URL specified.: You must configure a URL for Collaborator
+	at com.smartbear.ccollab.client.LoginUtils.getXmlClient(LoginUtils.java:406)
+	at com.smartbear.collaborator.Collaborator.getConnection(Collaborator.java:181)
+	at com.smartbear.collaborator.jobs.ClientModelRefreshJob.createConnection(ClientModelRefreshJob.java:32)
+	at com.smartbear.collaborator.jobs.ClientModelRefreshJob.createConnection(ClientModelRefreshJob.java:1)
+	at com.smartbear.collaborator.jobs.RefreshJob.getConnection(RefreshJob.java:116)
+	at com.smartbear.collaborator.jobs.RefreshJob.run(RefreshJob.java:152)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
