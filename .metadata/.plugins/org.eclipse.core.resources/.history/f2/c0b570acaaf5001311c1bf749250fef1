@@ -182,7 +182,7 @@ public class AI {
 		
 		attackAi.update(space, fleet,reserve);
 		defenseAi.update(space,fleet03);
-		if(mothership.getClosestEnemy()!=null && space.getDistance(mothership,mothership.getClosestEnemy())<500){
+		if(space.getDistance(mothership,mothership.getClosestEnemy())<500){
 			mothership.setTarget(new Beacon(mothership.getX()-200,mothership.getY()-200,Color.red));
 		}
 		else{
