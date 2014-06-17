@@ -41,6 +41,21 @@ public class Scout extends AttackShip{
 		drawHealth(g);
 	}
 	
+	public void move(){
+		super.move();
+		if(fleet==5 && target!=null){
+			System.out.println("keep moving");
+			double r=calculateDistance(target);
+			if(r>10){
+				x=(int) (x+(int)(target.getX()-x)*speed*10/r);
+				y=(int) (y+(int)(target.getY()-y)*speed*10/r);
+			}
+			else{
+				x=target.getX();
+				y=target.getY();
+			}
+		}
+	}
 
 	
 	

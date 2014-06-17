@@ -220,4 +220,6 @@ public class SpaceOBJ extends JLabel implements KeyListener{
 		g2.setColor(team);
 		g2.drawRect(0, 0, xLim-1, yLim-1);
 	}
+	
+	public int getSpeed(){return 0;}
 }

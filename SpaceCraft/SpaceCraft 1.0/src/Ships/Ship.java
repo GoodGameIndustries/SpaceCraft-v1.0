@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import Frame.Space;
+import Objects.Beacon;
 import Objects.Resource;
 import Objects.SpaceOBJ;
 
@@ -68,6 +69,81 @@ public class Ship extends SpaceOBJ{
 		target = t;
 	}
 	
+	public void setTarget(SpaceOBJ t, Color color){
+		if(color==Color.red && t instanceof Ship && t.team()==Color.blue && t.getTarget()!=null){
+			double r=calculateDistance(t,t.getTarget());
+			int xPre=t.getTarget().getX();int yPre=t.getTarget().getY();
+			if(t instanceof MotherShip){
+				if(this instanceof Destroyer){
+					xPre=(int) (t.getX()+(r/20)*(int)(t.getTarget().getX()-t.getX())*t.getSpeed()*20/r);
+					yPre=(int) (t.getY()+(r/20)*(int)(t.getTarget().getY()-t.getY())*t.getSpeed()*20/r);
+				}
+				else if(this instanceof Sniper){
+					xPre=(int) (t.getX()+(r/10)*(int)(t.getTarget().getX()-t.getX())*t.getSpeed()*20/r);
+					yPre=(int) (t.getY()+(r/10)*(int)(t.getTarget().getY()-t.getY())*t.getSpeed()*20/r);
+				}
+				else if(this instanceof Tank){
+					xPre=(int) (t.getX()+(r/5)*(int)(t.getTarget().getX()-t.getX())*t.getSpeed()*20/r);
+					yPre=(int) (t.getY()+(r/5)*(int)(t.getTarget().getY()-t.getY())*t.getSpeed()*20/r);
+				}
+				if(t.getX()==t.getTarget().getX()){xPre=t.getX();}
+				if(t.getY()==t.getTarget().getY()){yPre=t.getY();}
+			}
+			else if(t instanceof Destroyer){
+				if(this instanceof Destroyer){
+					xPre=(int) (t.getX()+15*(int)(t.getTarget().getX()-t.getX())*t.getSpeed()*20/r);
+					yPre=(int) (t.getY()+15*(int)(t.getTarget().getY()-t.getY())*t.getSpeed()*20/r);
+				}
+				else if(this instanceof Sniper){
+					xPre=(int) (t.getX()+20*(int)(t.getTarget().getX()-t.getX())*t.getSpeed()*20/r);
+					yPre=(int) (t.getY()+20*(int)(t.getTarget().getY()-t.getY())*t.getSpeed()*20/r);
+				}
+				else if(this instanceof Tank){
+					xPre=(int) (t.getX()+30*(int)(t.getTarget().getX()-t.getX())*t.getSpeed()*20/r);
+					yPre=(int) (t.getY()+30*(int)(t.getTarget().getY()-t.getY())*t.getSpeed()*20/r);
+				}
+				if(t.getX()==t.getTarget().getX()){xPre=t.getX();}
+				if(t.getY()==t.getTarget().getY()){yPre=t.getY();}
+			}
+			else if(t instanceof Sniper){
+				if(this instanceof Destroyer){
+					xPre=(int) (t.getX()+15*(int)(t.getTarget().getX()-t.getX())*t.getSpeed()*20/r);
+					yPre=(int) (t.getY()+15*(int)(t.getTarget().getY()-t.getY())*t.getSpeed()*20/r);
+				}
+				else if(this instanceof Sniper){
+					xPre=(int) (t.getX()+20*(int)(t.getTarget().getX()-t.getX())*t.getSpeed()*20/r);
+					yPre=(int) (t.getY()+20*(int)(t.getTarget().getY()-t.getY())*t.getSpeed()*20/r);
+				}
+				else if(this instanceof Tank){
+					xPre=(int) (t.getX()+30*(int)(t.getTarget().getX()-t.getX())*t.getSpeed()*20/r);
+					yPre=(int) (t.getY()+30*(int)(t.getTarget().getY()-t.getY())*t.getSpeed()*20/r);
+				}
+				if(t.getX()==t.getTarget().getX()){xPre=t.getX();}
+				if(t.getY()==t.getTarget().getY()){yPre=t.getY();}
+			}
+			else if(t instanceof Tank){
+				if(this instanceof Destroyer){
+					xPre=(int) (t.getX()+15*(int)(t.getTarget().getX()-t.getX())*t.getSpeed()*20/r);
+					yPre=(int) (t.getY()+15*(int)(t.getTarget().getY()-t.getY())*t.getSpeed()*20/r);
+				}
+				else if(this instanceof Sniper){
+					xPre=(int) (t.getX()+20*(int)(t.getTarget().getX()-t.getX())*t.getSpeed()*20/r);
+					yPre=(int) (t.getY()+20*(int)(t.getTarget().getY()-t.getY())*t.getSpeed()*20/r);
+				}
+				else if(this instanceof Tank){
+					xPre=(int) (t.getX()+30*(int)(t.getTarget().getX()-t.getX())*t.getSpeed()*20/r);
+					yPre=(int) (t.getY()+30*(int)(t.getTarget().getY()-t.getY())*t.getSpeed()*20/r);
+				}
+				if(t.getX()==t.getTarget().getX()){xPre=t.getX();}
+				if(t.getY()==t.getTarget().getY()){yPre=t.getY();}
+			}
+			target=new Beacon(xPre,yPre,Color.blue);
+			//target=new Beacon(t.getTarget().getX(),t.getTarget().getY(),Color.blue);
+		}
+		else{target=t;}
+		//target=t;
+	}
+	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
@@ -91,6 +167,10 @@ public class Ship extends SpaceOBJ{
 	
 	protected double calculateDistance(SpaceOBJ target){
 		return Math.pow(Math.pow(target.getX()-x,2)+Math.pow(target.getY()-y,2),0.5);
+	}
+	
+	protected double calculateDistance(SpaceOBJ self, SpaceOBJ target){
+		return Math.pow(Math.pow(target.getX()-self.getX(),2)+Math.pow(target.getY()-self.getY(),2),0.5);
 	}
 	
 	protected void calculateMove(SpaceOBJ t) {
@@ -144,5 +224,7 @@ public class Ship extends SpaceOBJ{
 		
 	}
 	
+	public int getSpeed(){return speed;}
 	
+	public void aiSudoMove(int x, int y){}
 }

@@ -1,0 +1,88 @@
+package Ships;
+import java.awt.Color;
+import java.util.ArrayList;
+
+import Frame.Space;
+import Objects.Bullet;
+
+/**
+ * 
+ */
+
+/**
+ * @author Emmett Deen
+ * @version 1.0
+ * @date May 13, 2014
+ */
+public class AttackShip extends Ship{
+
+	protected int power = 1;
+	protected ArrayList<Bullet> ammoBank = new ArrayList<Bullet>();
+	protected int ammoCount=500;
+	protected boolean isAttack = false;
+	protected double maxDistance = 1000;
+	protected int rechargeNeeded = 10;
+	
+	
+	public AttackShip(Space s,int x, int y,Color t) {
+		super(s,x, y,t);
+		name = "AttackShip";
+		for(int i=0;i<500;i++){
+			ammoBank.add(new Bullet(s,x+xLim+20,y+yLim+20));
+		}
+		if(ammoBank.size()>0){System.out.println("ammo left");}
+		health=100;
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	public AttackShip(Space s,int x, int y,int xLim,int yLim,Color t) {
+		super(s,x, y,xLim,yLim,t);
+		name = "AttackShip";
+		for(int i=0;i<500;i++){
+			ammoBank.add(new Bullet(s,x+xLim+20,y+yLim+20));
+		}
+		health=100;
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	public Bullet fire(){
+		Bullet bullet=new Bullet(space,x+xLim+20,y+yLim+20);
+		bullet.setTarget(target);
+		return bullet;
+	}
+	
+	
+	
+	public void move(){
+		if(!(target instanceof Ship) || space.getDistance(this, target)>maxDistance){
+		super.move();
+		}
+		
+	}
+	
+	public boolean getAttack(){return true;}
+	
+	public int ammoCount(){return ammoCount;}
+	
+	public void ammoUsed(){ammoBank.remove(0);ammoCount--;}
+	
+	public ArrayList<Bullet> getAmmoBank(){
+		isAttack = true;
+		return ammoBank;
+		
+	}
+	
+	public boolean fireAgain(){return (recharge%rechargeNeeded==0);}
+	
+	public String getInfo(){return "Name: " + name +" Health: "+health+" Speed: "+speed+" Power: " + power + " Ammo: " + ammoCount +" X: "+x+" Y: "+y;}
+
+	public double getMaxDistance() {
+		// TODO Auto-generated method stub
+		return maxDistance;
+	}
+	
+	
+}

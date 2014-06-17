@@ -44,6 +44,7 @@ public class AI {
 	protected ArrayList<Ship> fleet04=new ArrayList<Ship>();//reserve
 	protected ArrayList<Ship> fleet05=new ArrayList<Ship>();//suicide scouts against defense
 	
+	
 	private int select = -1; //0=gather,1=attack,2=defense
 	
 	public AI(int x, int y, Space space){
@@ -153,16 +154,16 @@ public class AI {
 		}
 		
 		
-		if(fleet1SnipCount<4){makeShip(3,space,1);}
-		else if(fleet1TankCount<4){makeShip(4,space,1);}
-		else if(fleet1DesCount<4){makeShip(2,space,1);}
+		if(fleet1SnipCount<2){makeShip(3,space,1);}
+		else if(fleet1TankCount<4){makeShip(2,space,1);}
+		else if(fleet1DesCount<6){makeShip(4,space,1);}
 			
-		if(enemyBrick+enemyBubble>1 && fleet05.size()<8){
+		if(enemyBrick+enemyBubble>1 && fleet05.size()<4){
 			makeShip(1,space,5);
 		}
 		
 		
-		fleet01.clear();fleet02.clear();fleet03.clear();fleet04.clear();
+		fleet01.clear();fleet02.clear();fleet03.clear();fleet04.clear();fleet05.clear();
 		
 		for(Ship ship:fleet){
 			if(ship.fleet()==1){fleet01.add(ship);}
@@ -181,6 +182,7 @@ public class AI {
 		if(fleet01Needed<=0 && fleet02Needed<=0 && aiBrick>=9){if(!needGather){makeShip(1,space,4);}}
 		
 		attackAi.update(space, fleet,reserve);
+		//attackAi.killPattern(fleet02);
 		defenseAi.update(space,fleet03);
 		if(mothership.getClosestEnemy()!=null && space.getDistance(mothership,mothership.getClosestEnemy())<2000){
 			mothership.setTarget(new Beacon(mothership.getX()-200,mothership.getY()-200,Color.red));
@@ -188,6 +190,11 @@ public class AI {
 		else{
 			mothership.setTarget(mothership.getClosestResource());
 		}
+		System.out.println("fleet 1:"+fleet01.size());
+		System.out.println("fleet 2:"+fleet02.size());
+		System.out.println("fleet 3:"+fleet03.size());
+		System.out.println("fleet 4:"+fleet04.size());
+		System.out.println("fleet 5:"+fleet05.size());
 		
 	}
 	

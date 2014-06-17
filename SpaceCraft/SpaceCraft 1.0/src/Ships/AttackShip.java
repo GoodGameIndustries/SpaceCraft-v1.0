@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import Frame.Space;
+import Objects.Beacon;
 import Objects.Bullet;
 
 /**
@@ -57,10 +58,16 @@ public class AttackShip extends Ship{
 	
 	
 	public void move(){
-		if(!(target instanceof Ship) || space.getDistance(this, target)>maxDistance){
+		if(!(target instanceof Ship || (target instanceof Beacon && this.team()==Color.red)) || space.getDistance(this, target)>maxDistance){
 		super.move();
 		}
 		
+	}
+	
+	public void aiSudoMove(int x, int y){
+		if(!this.collision(new Beacon(x,y,Color.red))){
+			calculateMove(new Beacon(x,y,Color.red));
+		}
 	}
 	
 	public boolean getAttack(){return true;}
