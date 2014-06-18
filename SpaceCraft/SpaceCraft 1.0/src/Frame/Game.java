@@ -68,7 +68,13 @@ public class Game extends JFrame implements MouseMotionListener,MouseListener,Ke
 		
 		
 		this.setVisible(true);//sets the frame to be visible
-		space.run();
+		if(space.playerMother()==false){
+			space.run();
+		}
+		else{
+			System.out.println("ac/dc");
+			new EndGame(true);
+		}
 		
 	}
 
@@ -82,6 +88,7 @@ public class Game extends JFrame implements MouseMotionListener,MouseListener,Ke
 			
 			new MainMenu();
 			new Game();
+			
 			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

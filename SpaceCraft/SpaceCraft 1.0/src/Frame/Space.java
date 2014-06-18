@@ -403,6 +403,15 @@ public class Space extends JPanel implements Runnable{
 		return temp;
 	}
 	
+	public boolean playerMother(){
+		for(SpaceOBJ obj:objects){
+			if(obj instanceof MotherShip && obj.team()==Color.blue){
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public ArrayList<SpaceOBJ> allObjects(){
 		return allObjects;
 	}
@@ -429,5 +438,9 @@ public class Space extends JPanel implements Runnable{
 	public void setyLim(int yLim) {
 		this.yLim = yLim;
 	}
+	
+	public MotherShip getPlayerMotherShip(){return player;}
+	
+	public MotherShip getAiMotherShip(){return ai.getMotherShip();}
 	
 }
